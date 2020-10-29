@@ -37,4 +37,4 @@ if(creatingMagma  and  !place_meeting(x, y + global.squareSize, oMagma))
 //Al ejecutarse la alarma, se reactiva la creación.
 
 	//Se verifica que no se estén creando instancias infinitas.
-	show_debug_message(string(instance_number(oMagma)));
+	//show_debug_message(string(instance_number(oMagma)));
