@@ -1,15 +1,18 @@
 {
   "resources": [
+    {"id":{"name":"sDrill","path":"sprites/sDrill/sDrill.yy",},"order":10,},
     {"id":{"name":"sHat","path":"sprites/sHat/sHat.yy",},"order":1,},
     {"id":{"name":"oGround","path":"objects/oGround/oGround.yy",},"order":0,},
     {"id":{"name":"oGlobals","path":"objects/oGlobals/oGlobals.yy",},"order":4,},
     {"id":{"name":"sMagmaFluid","path":"sprites/sMagmaFluid/sMagmaFluid.yy",},"order":9,},
     {"id":{"name":"sGround","path":"sprites/sGround/sGround.yy",},"order":1,},
+    {"id":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"order":9,},
     {"id":{"name":"oMagma","path":"objects/oMagma/oMagma.yy",},"order":7,},
     {"id":{"name":"oRock","path":"objects/oRock/oRock.yy",},"order":2,},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},"order":1,},
     {"id":{"name":"Room0","path":"rooms/Room0/Room0.yy",},"order":2,},
     {"id":{"name":"sPlayerHat","path":"sprites/sPlayerHat/sPlayerHat.yy",},"order":0,},
+    {"id":{"name":"oDrill","path":"objects/oDrill/oDrill.yy",},"order":8,},
     {"id":{"name":"oWarp","path":"objects/oWarp/oWarp.yy",},"order":5,},
     {"id":{"name":"sRock","path":"sprites/sRock/sRock.yy",},"order":2,},
     {"id":{"name":"oRoom","path":"objects/oRoom/oRoom.yy",},"order":3,},

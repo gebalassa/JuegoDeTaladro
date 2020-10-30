@@ -9,7 +9,7 @@ if(creatingMagma  and  !place_meeting(x, y + global.squareSize, oMagma))
 {
 	//La última condición antes de fluir hacia abajo es que no exista un sólido en
 	//el sitio.
-	if(!place_meeting(x, y + global.squareSize, oRock))
+	if(!place_meeting(x, y + global.squareSize, oSolid))
 	{
 		alarm_set(0, room_speed * creatingSpeed);
 		creatingMagma = false;
@@ -19,13 +19,13 @@ if(creatingMagma  and  !place_meeting(x, y + global.squareSize, oMagma))
 	else
 	{
 		//Comprueba la derecha...
-		if(!place_meeting(x + global.squareSize, y, oRock)  and  !place_meeting(x + global.squareSize, y, oMagma))
+		if(!place_meeting(x + global.squareSize, y, oSolid)  and  !place_meeting(x + global.squareSize, y, oMagma))
 		{
 			alarm_set(1, room_speed * creatingSpeed);
 			creatingMagma = false;
 		}
 		//...y la izquierda.
-		if(!place_meeting(x - global.squareSize, y, oRock)  and  !place_meeting(x - global.squareSize, y, oMagma))
+		if(!place_meeting(x - global.squareSize, y, oSolid)  and  !place_meeting(x - global.squareSize, y, oMagma))
 		{
 			alarm_set(2, room_speed * creatingSpeed);
 			creatingMagma = false;
@@ -37,4 +37,4 @@ if(creatingMagma  and  !place_meeting(x, y + global.squareSize, oMagma))
 //Al ejecutarse la alarma, se reactiva la creación.
 
 	//Se verifica que no se estén creando instancias infinitas.
-	show_debug_message(string(instance_number(oMagma)));
+	//show_debug_message(string(instance_number(oMagma)));

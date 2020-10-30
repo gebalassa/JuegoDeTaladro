@@ -1,16 +1,13 @@
 {
   "spriteId": {
-    "name": "sGround",
-    "path": "sprites/sGround/sGround.yy",
+    "name": "sDrill",
+    "path": "sprites/sDrill/sDrill.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "oSolid",
-    "path": "objects/oSolid/oSolid.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -31,7 +28,7 @@
     "path": "folders/Objetos.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oGround",
+  "name": "oDrill",
   "tags": [],
   "resourceType": "GMObject",
 }
