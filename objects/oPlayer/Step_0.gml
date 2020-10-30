@@ -65,7 +65,7 @@ if (horizontalCycle)
 //------------------------------------------------
 if (movementVertical)
 {
-	// If there's NO floor...
+	// Hole in Floor (pos. fallSpeed) or Up-Drill movement (neg. Fallspeed)
 	if (!place_meeting(x, y + global.squareSize * sign(fallSpeed), oSolid))
 	{
 		// Enables verticalCycle
@@ -110,11 +110,11 @@ if (allowDrill)
 	keyDown = keyboard_check(vk_down);
 	keyUp = keyboard_check(vk_up);
 	keySpace = keyboard_check(vk_space);
-	isDirectionPressed = keyRight || keyLeft || keyUp || keyDown; // Verifica si se mantiene una direccion
-	leftAndRight = keyRight && keyLeft; // Verifica que izq y derecha estan ambas presionadas
+	isOneDirectionPressed = keyRight ^^ keyLeft ^^ keyUp ^^ keyDown; // Verif. q mant. una dir. UNICA
 	
-	// Si no existe el taladro, se tiene presionado Space y no estan izq y der. al mismo tiempo...
-	if (!instance_exists(myDrill) && keySpace && !leftAndRight)
+	
+	// Si no existe el taladro, se tiene presionado Space y UNA direccion...
+	if (!instance_exists(myDrill) && keySpace && isOneDirectionPressed)
 	{
 		// Izquierda
 		if (keyRight)
@@ -134,12 +134,30 @@ if (allowDrill)
 			currentDrillCycle = 2;
 		}
 		
+		// Up
+		// NOTA: Tal y como con Derecha se compensa por punto de origen.
+		// En este caso, no se suma nada ni a X ni a Y.
+		else if (keyUp)
+		{
+			myDrill = instance_create_layer(x, y, "oPlayer", oDrill);
+			myDrill.image_angle = 90; // Hacia arriba
+			currentDrillCycle = 3;
+		}
+		
+		// Abajo
+		// NOTA: Tal y como con Derecha, es necesario compensar debido al punto de origen.
+		// En este caso, sumamos un bloque al eje X.		
+		else if (keyDown)
+		{
+			myDrill = instance_create_layer(x + global.squareSize,
+			y + distDrill * global.squareSize, "oPlayer", oDrill);
+			myDrill.image_angle = 270; // Hacia abajo
+			currentDrillCycle = 4;
+		}
 	}
 	
-	// Si existe el taladro, se tiene presionado Space y se tiene presionado alguna direccion
-	// y NO están presionadas izquierda+derecha al mismo tiempo...
-	// NOTA: "isDirectionPressed" evita que el taladro continue si solo se mantiene Space.
-	else if (instance_exists(myDrill) && keySpace && isDirectionPressed && !leftAndRight)
+	// Si existe el taladro, se tiene presionado Space y se tiene presionado UNA direccion...
+	else if (instance_exists(myDrill) && keySpace && isOneDirectionPressed)
 	{	
 		// Izquierda
 		if (keyRight)
@@ -158,11 +176,35 @@ if (allowDrill)
 			myDrill.y = y;
 			myDrill.image_xscale = -1;
 		}
+		
+		// Up
+		// NOTA: Tal y como con Derecha se compensa por punto de origen.
+		// En este caso, no se suma nada ni a X ni a Y.
+		else if (keyUp)
+		{
+			myDrill.x = x;
+			myDrill.y = y;
+			myDrill.image_angle = 90; // Hacia arriba
+		}
+		
+		// Abajo
+		// NOTA: Tal y como con Derecha, es necesario compensar debido al punto de origen.
+		// En este caso, sumamos un bloque al eje X.
+		else if (keyDown)
+		{
+			myDrill.x = x + global.squareSize;
+			myDrill.y = y + distDrill * global.squareSize;
+			myDrill.image_angle = 270; // Hacia abajo
+ 	 	}
 	}
-	
-	// En otros casos, se elimina oDrill
+	 
+ 	// En otros casos, se elimina oDrill
 	else if (instance_exists(myDrill))
 	{
+		/*
+		show_debug_message("myDrill: "+ string(myDrill)+"||"+string(myDrill.image_angle)+
+		"||"+string(myDrill.image_xscale));
+		*/
 		instance_destroy(myDrill);
 		myDrill = noone;
 		currentDrillCycle = 0;
