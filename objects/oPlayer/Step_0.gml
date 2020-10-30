@@ -111,9 +111,10 @@ if (allowDrill)
 	keyUp = keyboard_check(vk_up);
 	keySpace = keyboard_check(vk_space);
 	isDirectionPressed = keyRight || keyLeft || keyUp || keyDown; // Verifica si se mantiene una direccion
+	leftAndRight = keyRight && keyLeft; // Verifica que izq y derecha estan ambas presionadas
 	
-	// Si no existe el taladro y se tiene presionado Space...
-	if (!instance_exists(myDrill) && keySpace)
+	// Si no existe el taladro, se tiene presionado Space y no estan izq y der. al mismo tiempo...
+	if (!instance_exists(myDrill) && keySpace && !leftAndRight)
 	{
 		// Izquierda
 		if (keyRight)
@@ -135,9 +136,10 @@ if (allowDrill)
 		
 	}
 	
-	// Si existe el taladro, se tiene presionado Space y se tiene presionado alguna direccion...
-	// "isDirectionPressed" evita que el taladro continue si solo se mantiene Space.
-	else if (instance_exists(myDrill) && keySpace && isDirectionPressed)
+	// Si existe el taladro, se tiene presionado Space y se tiene presionado alguna direccion
+	// y NO están presionadas izquierda+derecha al mismo tiempo...
+	// NOTA: "isDirectionPressed" evita que el taladro continue si solo se mantiene Space.
+	else if (instance_exists(myDrill) && keySpace && isDirectionPressed && !leftAndRight)
 	{	
 		// Izquierda
 		if (keyRight)
@@ -158,7 +160,7 @@ if (allowDrill)
 		}
 	}
 	
-	// En otras circunstancias, se elimina oDrill
+	// En otros casos, se elimina oDrill
 	else if (instance_exists(myDrill))
 	{
 		instance_destroy(myDrill);
