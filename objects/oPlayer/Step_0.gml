@@ -112,18 +112,27 @@ if (allowDrill)
 	keySpace = keyboard_check(vk_space);
 	isOneDirectionPressed = keyRight ^^ keyLeft ^^ keyUp ^^ keyDown; // Verif. q mant. una dir. UNICA
 	
+	// Chequeo: Equivalencia de que tecla de direccion y currentDrillCycle sean equivalentes.
+	// NOTA: Esto elimina bug donde, si se pasaba de una dirección a otra en dos frames seguidos,
+	// el taladro no alcanzaba a entrar a "Destruccion Taladro" y podian combinarse modificaciones al 
+	// sprite de dos dir. distintas en "Mantencion Taladro", quedando el obj. en cualquier parte.
+	// Ej.: image_xangle = 270 de "abajo" con image_xscale = -1 de "derecha".
+	var cdc = currentDrillCycle; // Variable temporal para acortar codigo
+	if ((cdc == 1 && keyRight) || (cdc==2 && keyLeft) || (cdc==3 && keyUp) || (cdc==4 && keyDown))
+	{ checkDirEqualCycle = true; } else { checkDirEqualCycle = false; }
 	
+	// Creacion taladro
 	// Si no existe el taladro, se tiene presionado Space y UNA direccion...
 	if (!instance_exists(myDrill) && keySpace && isOneDirectionPressed)
 	{
-		// Izquierda
+		// Derecha
 		if (keyRight)
 		{
 			myDrill = instance_create_layer(x + distDrill * global.squareSize, y, "oPlayer", oDrill);
 			currentDrillCycle = 1;
 		}
 		
-		// Derecha
+		// Izquierda
 		// NOTA: Origen es Top Left, entonces se debe compensar cuando se usa image_xscale
 		// para mantener posición ya que el origen pasa a Top Right. Por eso a "x" no le
 		// estamos restando nada. Distinto sería si el origen estuviese en el centro.
@@ -135,7 +144,7 @@ if (allowDrill)
 		}
 		
 		// Up
-		// NOTA: Tal y como con Derecha se compensa por punto de origen.
+		// NOTA: Tal y como con Izquierda se compensa por punto de origen.
 		// En este caso, no se suma nada ni a X ni a Y.
 		else if (keyUp)
 		{
@@ -145,7 +154,7 @@ if (allowDrill)
 		}
 		
 		// Abajo
-		// NOTA: Tal y como con Derecha, es necesario compensar debido al punto de origen.
+		// NOTA: Tal y como con Izquierda, es necesario compensar debido al punto de origen.
 		// En este caso, sumamos un bloque al eje X.		
 		else if (keyDown)
 		{
@@ -156,17 +165,19 @@ if (allowDrill)
 		}
 	}
 	
-	// Si existe el taladro, se tiene presionado Space y se tiene presionado UNA direccion...
-	else if (instance_exists(myDrill) && keySpace && isOneDirectionPressed)
-	{	
-		// Izquierda
-		if (keyRight)
+	// Mantencion taladro
+	// Si existe el taladro, se tiene presionado Space, se tiene presionado UNA direccion y
+	// la tecla de direccion es igual corresponde al ciclo actual...
+	else if (instance_exists(myDrill) && keySpace && isOneDirectionPressed && checkDirEqualCycle)
+	{		
+		// Derecha
+		if (keyRight) 
 		{
 			myDrill.x = x + distDrill * global.squareSize;
 			myDrill.y = y;
 		}
 		
-		// Derecha
+		// Izquierda
 		// NOTA: Origen es Top Left, entonces se debe compensar cuando se usa image_xscale
 		// para mantener posición ya que el origen pasa a Top Right. Por eso a "x" no le
 		// estamos restando nada. Distinto sería si el origen estuviese en el centro.
@@ -178,7 +189,7 @@ if (allowDrill)
 		}
 		
 		// Up
-		// NOTA: Tal y como con Derecha se compensa por punto de origen.
+		// NOTA: Tal y como con Izquierda se compensa por punto de origen.
 		// En este caso, no se suma nada ni a X ni a Y.
 		else if (keyUp)
 		{
@@ -188,7 +199,7 @@ if (allowDrill)
 		}
 		
 		// Abajo
-		// NOTA: Tal y como con Derecha, es necesario compensar debido al punto de origen.
+		// NOTA: Tal y como con Izquierda, es necesario compensar debido al punto de origen.
 		// En este caso, sumamos un bloque al eje X.
 		else if (keyDown)
 		{
@@ -198,6 +209,7 @@ if (allowDrill)
  	 	}
 	}
 	 
+	 // Destruccion Taladro
  	// En otros casos, se elimina oDrill
 	else if (instance_exists(myDrill))
 	{
