@@ -64,13 +64,20 @@ if (horizontalCycle)
 /// Vertical Movement
 //------------------------------------------------
 if (movementVertical)
-{
-	// Hole in Floor (pos. fallSpeed) or Up-Drill movement (neg. Fallspeed)
+{	
+	// Cambio en fallSpeed a negativo cuando se usa el taladro hacia arriba, y HAY tierra 
+	
+	//if (place_meeting(x, y - global.squareSize * sign(fallSpeed), oGround) && currentDrillCycle == 3)
+	//{ fallSpeed = -1 * abs(fallSpeed); sdm("REEEEE"); } else { fallSpeed = abs(fallSpeed); }	
+	if (justDestroyedGround && currentDrillCycle == 3)
+	{ fallSpeed = -1 * abs(fallSpeed); } else { fallSpeed = abs(fallSpeed); }
+	
+	// Hole in Floor (if pos. fallSpeed) or Up-Drill movement (if neg. Fallspeed)
 	if (!place_meeting(x, y + global.squareSize * sign(fallSpeed), oSolid))
 	{
 		// Enables verticalCycle
 		verticalCycle = true;
-		// Deactivate horizontal/vertical inputs while falling at least one complete block
+		// Deactivate horizontal/vert ical inputs while falling at least one complete block
 		movementHorizontal = false;
 		movementVertical = false;
 	}
@@ -80,11 +87,11 @@ if (movementVertical)
 // Meanwhile, 'movementVertical' and 'movementHorizontal' are deactivated.
 if (verticalCycle)
 {
-	y += fallSpeed;
+y += fallSpeed;
 	
 	movementCounterVertical++;
 	// End of Animation
-	if (movementCounterVertical == global.squareSize / fallSpeed)
+	if (movementCounterVertical == global.squareSize / abs(fallSpeed) )
 	{			
 		// Restarting variables
 		// NOTE: The way this is currently made, one horizontal move is allowed
@@ -113,6 +120,7 @@ if (allowDrill)
 	isOneDirectionPressed = keyRight ^^ keyLeft ^^ keyUp ^^ keyDown; // Verif. q mant. una dir. UNICA
 	
 	// Chequeo: Equivalencia de que tecla de direccion y currentDrillCycle sean equivalentes.
+	// El taladro no puede cambiar de direccion sin destruirse primero.
 	// NOTA: Esto elimina bug donde, si se pasaba de una dirección a otra en dos frames seguidos,
 	// el taladro no alcanzaba a entrar a "Destruccion Taladro" y podian combinarse modificaciones al 
 	// sprite de dos dir. distintas en "Mantencion Taladro", quedando el obj. en cualquier parte.
@@ -130,6 +138,7 @@ if (allowDrill)
 		{
 			myDrill = instance_create_layer(x + distDrill * global.squareSize, y, "oPlayer", oDrill);
 			currentDrillCycle = 1;
+			myDrill.myPlayer = self;
 		}
 		
 		// Izquierda
@@ -141,6 +150,7 @@ if (allowDrill)
 			myDrill = instance_create_layer(x, y, "oPlayer", oDrill);
 			myDrill.image_xscale = -1;
 			currentDrillCycle = 2;
+			myDrill.myPlayer = self;
 		}
 		
 		// Up
@@ -151,6 +161,7 @@ if (allowDrill)
 			myDrill = instance_create_layer(x, y, "oPlayer", oDrill);
 			myDrill.image_angle = 90; // Hacia arriba
 			currentDrillCycle = 3;
+			myDrill.myPlayer = self;
 		}
 		
 		// Abajo
@@ -162,6 +173,7 @@ if (allowDrill)
 			y + distDrill * global.squareSize, "oPlayer", oDrill);
 			myDrill.image_angle = 270; // Hacia abajo
 			currentDrillCycle = 4;
+			myDrill.myPlayer = self;
 		}
 	}
 	
