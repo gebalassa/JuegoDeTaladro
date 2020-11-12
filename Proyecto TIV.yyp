@@ -1,25 +1,20 @@
 {
   "resources": [
-    {"id":{"name":"sDrill","path":"sprites/sDrill/sDrill.yy",},"order":10,},
     {"id":{"name":"sHat","path":"sprites/sHat/sHat.yy",},"order":1,},
-    {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"order":10,},
     {"id":{"name":"oGround","path":"objects/oGround/oGround.yy",},"order":0,},
-    {"id":{"name":"TestingTierra1","path":"rooms/TestingTierra1/TestingTierra1.yy",},"order":0,},
     {"id":{"name":"oGlobals","path":"objects/oGlobals/oGlobals.yy",},"order":4,},
     {"id":{"name":"sMagmaFluid","path":"sprites/sMagmaFluid/sMagmaFluid.yy",},"order":9,},
-    {"id":{"name":"debugShortcut","path":"scripts/debugShortcut/debugShortcut.yy",},"order":0,},
-    {"id":{"name":"TestingTunel","path":"rooms/TestingTunel/TestingTunel.yy",},"order":1,},
     {"id":{"name":"sGround","path":"sprites/sGround/sGround.yy",},"order":1,},
+<<<<<<< Updated upstream
+=======
     {"id":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"order":9,},
+    {"id":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"order":11,},
+>>>>>>> Stashed changes
     {"id":{"name":"oMagma","path":"objects/oMagma/oMagma.yy",},"order":7,},
     {"id":{"name":"oRock","path":"objects/oRock/oRock.yy",},"order":2,},
-    {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},"order":4,},
-    {"id":{"name":"Room4","path":"rooms/Room4/Room4.yy",},"order":5,},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},"order":1,},
-    {"id":{"name":"Room5","path":"rooms/Room5/Room5.yy",},"order":6,},
     {"id":{"name":"Room0","path":"rooms/Room0/Room0.yy",},"order":2,},
     {"id":{"name":"sPlayerHat","path":"sprites/sPlayerHat/sPlayerHat.yy",},"order":0,},
-    {"id":{"name":"oDrill","path":"objects/oDrill/oDrill.yy",},"order":8,},
     {"id":{"name":"oWarp","path":"objects/oWarp/oWarp.yy",},"order":5,},
     {"id":{"name":"sRock","path":"sprites/sRock/sRock.yy",},"order":2,},
     {"id":{"name":"oRoom","path":"objects/oRoom/oRoom.yy",},"order":3,},
@@ -51,13 +46,8 @@
   },
   "RoomOrder": [
     {"name":"Room1","path":"rooms/Room1/Room1.yy",},
-    {"name":"TestingTunel","path":"rooms/TestingTunel/TestingTunel.yy",},
-    {"name":"TestingTierra1","path":"rooms/TestingTierra1/TestingTierra1.yy",},
     {"name":"Room2","path":"rooms/Room2/Room2.yy",},
     {"name":"Room0","path":"rooms/Room0/Room0.yy",},
-    {"name":"Room3","path":"rooms/Room3/Room3.yy",},
-    {"name":"Room4","path":"rooms/Room4/Room4.yy",},
-    {"name":"Room5","path":"rooms/Room5/Room5.yy",},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
@@ -75,7 +65,6 @@
     {"folderPath":"folders/Notas.yy","order":13,"resourceVersion":"1.0","name":"Notas","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensiones.yy","order":14,"resourceVersion":"1.0","name":"Extensiones","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/HATS.yy","order":7,"resourceVersion":"1.0","name":"HATS","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Salas/TESTING.yy","order":3,"resourceVersion":"1.0","name":"TESTING","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},

@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"f67a1330-1c13-48b2-94cb-8859a1eca961","path":"sprites/sGround/sGround.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"f67a1330-1c13-48b2-94cb-8859a1eca961","path":"sprites/sGround/sGround.yy",},"LayerId":{"name":"c118045b-63de-4279-bf76-9da58c2c1139","path":"sprites/sGround/sGround.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sGround","path":"sprites/sGround/sGround.yy",},"resourceVersion":"1.0","name":"f67a1330-1c13-48b2-94cb-8859a1eca961","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"e291be70-08c0-4efb-9ad3-7073c6a58b6a","path":"sprites/sBackground/sBackground.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"e291be70-08c0-4efb-9ad3-7073c6a58b6a","path":"sprites/sBackground/sBackground.yy",},"LayerId":{"name":"d1c6e291-c81a-4a03-b932-4072cfc793e2","path":"sprites/sBackground/sBackground.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"resourceVersion":"1.0","name":"e291be70-08c0-4efb-9ad3-7073c6a58b6a","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"sGround","path":"sprites/sGround/sGround.yy",},
+    "spriteId": {"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"e8b43891-d74c-476f-b05a-01543e622441","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f67a1330-1c13-48b2-94cb-8859a1eca961","path":"sprites/sGround/sGround.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"b3e0dde0-ce77-4425-8aa1-08096645a348","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e291be70-08c0-4efb-9ad3-7073c6a58b6a","path":"sprites/sBackground/sBackground.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,21 +58,21 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"sGround","path":"sprites/sGround/sGround.yy",},
+    "parent": {"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},
     "resourceVersion": "1.3",
-    "name": "sGround",
+    "name": "sBackground",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c118045b-63de-4279-bf76-9da58c2c1139","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d1c6e291-c81a-4a03-b932-4072cfc793e2","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "Sprites",
     "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sGround",
+  "name": "sBackground",
   "tags": [],
   "resourceType": "GMSprite",
 }
