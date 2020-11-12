@@ -1,16 +1,13 @@
 {
   "spriteId": {
-    "name": "sGround",
-    "path": "sprites/sGround/sGround.yy",
+    "name": "sDrill",
+    "path": "sprites/sDrill/sDrill.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "oSolid",
-    "path": "objects/oSolid/oSolid.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -23,7 +20,10 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"oGround","path":"objects/oGround/oGround.yy",},"parent":{"name":"oDrill","path":"objects/oDrill/oDrill.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"oDrill","path":"objects/oDrill/oDrill.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -31,7 +31,7 @@
     "path": "folders/Objetos.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oGround",
+  "name": "oDrill",
   "tags": [],
   "resourceType": "GMObject",
 }

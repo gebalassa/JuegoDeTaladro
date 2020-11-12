@@ -1,0 +1,3 @@
+Este archivo se usará para testear el paso y actualizacion del main a las ramas
+
+Actualmente el main posee las funcionalidades de taladro y cámara.
