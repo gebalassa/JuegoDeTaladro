@@ -156,7 +156,7 @@ if (allowDrill)
 		
 		// Abajo
 		// NOTA: Tal y como con Izquierda, es necesario compensar debido al punto de origen.
-		// En este caso, sumamos un bloque al eje X.		
+		// En este caso, sumamos un bloque al eje X.
 		else if (keyDown)
 		{
 			myDrill = instance_create_layer(x + global.squareSize,
@@ -170,43 +170,52 @@ if (allowDrill)
 	// Mantencion taladro
 	// Si existe el taladro, se tiene presionado Space y se tiene presionado UNA direccion...
 	else if (instance_exists(myDrill) && keySpace && isOneDirectionPressed)
-	{		
+	{	
 		// Derecha
-		if (currentDrillCycle == 1) 
+		if (keyRight)
 		{
 			myDrill.x = x + distDrill * global.squareSize;
 			myDrill.y = y;
+			myDrill.image_xscale = 1;
+			myDrill.image_angle = 0;
+			currentDrillCycle = 1;
 		}
 		
 		// Izquierda
 		// NOTA: Origen es Top Left, entonces se debe compensar cuando se usa image_xscale
 		// para mantener posición ya que el origen pasa a Top Right. Por eso a "x" no le
 		// estamos restando nada. Distinto sería si el origen estuviese en el centro.
-		else if (currentDrillCycle == 2)
+		else if (keyLeft)
 		{
 			myDrill.x = x;
 			myDrill.y = y;
 			myDrill.image_xscale = -1;
+			myDrill.image_angle = 0;
+			currentDrillCycle = 2;
 		}
 		
 		// Up
 		// NOTA: Tal y como con Izquierda se compensa por punto de origen.
 		// En este caso, no se suma nada ni a X ni a Y.
-		else if (currentDrillCycle == 3)
+		else if (keyUp)
 		{
 			myDrill.x = x;
 			myDrill.y = y;
+			myDrill.image_xscale = 1;
 			myDrill.image_angle = 90; // Hacia arriba
+			currentDrillCycle = 3;
 		}
 		
 		// Abajo
 		// NOTA: Tal y como con Izquierda, es necesario compensar debido al punto de origen.
 		// En este caso, sumamos un bloque al eje X.
-		else if (currentDrillCycle == 4)
+		else if (keyDown)
 		{
 			myDrill.x = x + global.squareSize;
 			myDrill.y = y + distDrill * global.squareSize;
+			myDrill.image_xscale = 1;
 			myDrill.image_angle = 270; // Hacia abajo
+			currentDrillCycle = 4;
  	 	}
 	}
 	 
