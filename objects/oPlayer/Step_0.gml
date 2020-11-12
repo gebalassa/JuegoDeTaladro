@@ -57,7 +57,6 @@ if (horizontalCycle)
 		movementVertical = true;
 	}
 }
-//show_debug_message(string(squareCoordinateX[squareX]) + " " + string(squareCoordinateY[squareY]));
 //----------------------------------------------
 
 
