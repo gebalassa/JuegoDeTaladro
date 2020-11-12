@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"sDrill","path":"sprites/sDrill/sDrill.yy",},"order":10,},
+    {"id":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"order":11,},
     {"id":{"name":"sHat","path":"sprites/sHat/sHat.yy",},"order":1,},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"order":10,},
     {"id":{"name":"oGround","path":"objects/oGround/oGround.yy",},"order":0,},
@@ -50,9 +51,9 @@
     "children": [],
   },
   "RoomOrder": [
+    {"name":"Room1","path":"rooms/Room1/Room1.yy",},
     {"name":"TestingTunel","path":"rooms/TestingTunel/TestingTunel.yy",},
     {"name":"TestingTierra1","path":"rooms/TestingTierra1/TestingTierra1.yy",},
-    {"name":"Room1","path":"rooms/Room1/Room1.yy",},
     {"name":"TestingTunel","path":"rooms/TestingTunel/TestingTunel.yy",},
     {"name":"TestingTierra1","path":"rooms/TestingTierra1/TestingTierra1.yy",},
     {"name":"Room2","path":"rooms/Room2/Room2.yy",},
