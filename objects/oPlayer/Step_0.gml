@@ -1,12 +1,19 @@
 /// @desc
 
-// --How does basic movement work?--
+// --How does basic movement work?-- (OUTDATED!!!!!!!!!!! ARREGLAR O BORRAR!!!!)
 // 1) movementHorizontal -> Enables horizontalCycle
 // 2) horizontalCycle -> PREVENTS movementHorizontal & movementVertical
 // 3) horizontalCycle ENDS -> Activate everything
 // 4) movementVertical + hole on ground -> verticalCycle
 // 5) verticalCycle -> PREVENTS movementHorizontal & movementVertical
 // 6) verticalCycle ENDS -> Activate Everything
+
+// Chequear teclas
+keyRight = keyboard_check(vk_right);
+keyLeft = keyboard_check(vk_left);
+keyDown = keyboard_check(vk_down);
+keyUp = keyboard_check(vk_up);
+keySpace = keyboard_check(vk_space);
 
 if(death)
 {
@@ -17,9 +24,6 @@ if(death)
 //-----------------------------
 if (movementHorizontal)
 {
-	keyRight = keyboard_check(vk_right);
-	keyLeft = keyboard_check(vk_left);
-
 	horizontalDirection = keyRight - keyLeft;
 	
 	// If there's a solid in the way...
@@ -64,15 +68,17 @@ if (horizontalCycle)
 //------------------------------------------------
 if (movementVertical)
 {	
-	// Cambio en fallSpeed a negativo cuando se usa el taladro hacia arriba, y HAY tierra 
+	// Cambio en fallSpeed a negativo cuando se usa el taladro hacia arriba, y HAY tierra 	
+	if (justDestroyedGround && currentDrillCycle == 3) { fallSpeed = -1 * abs(fallSpeed); }
+	else { fallSpeed = abs(fallSpeed); }
 	
-	//if (place_meeting(x, y - global.squareSize * sign(fallSpeed), oGround) && currentDrillCycle == 3)
-	//{ fallSpeed = -1 * abs(fallSpeed); sdm("REEEEE"); } else { fallSpeed = abs(fallSpeed); }	
-	if (justDestroyedGround && currentDrillCycle == 3)
-	{ fallSpeed = -1 * abs(fallSpeed); } else { fallSpeed = abs(fallSpeed); }
+	// Cambio en fallSpeed a CERO cuando se usa el taladro hacia el lado, y HAY tierra
+	if (justDestroyedGround && (currentDrillCycle == 1 || currentDrillCycle == 2))
+	{ horizontalDrilling = true; }
+	else { horizontalDrilling = false;}
 	
-	// Hole in Floor (if pos. fallSpeed) or Up-Drill movement (if neg. Fallspeed)
-	if (!place_meeting(x, y + global.squareSize * sign(fallSpeed), oSolid))
+	// Hole in Floor (if pos. fallSpeed) or Up-Drill movement (if neg. Fallspeed).
+	if (!place_meeting(x, y + global.squareSize * sign(fallSpeed), oSolid) && !horizontalDrilling)
 	{
 		// Enables verticalCycle
 		verticalCycle = true;
@@ -110,12 +116,6 @@ y += fallSpeed;
 // Permiso de uso de taladro
 if (allowDrill)
 {
-	// Chequear teclas
-	keyRight = keyboard_check(vk_right);
-	keyLeft = keyboard_check(vk_left);
-	keyDown = keyboard_check(vk_down);
-	keyUp = keyboard_check(vk_up);
-	keySpace = keyboard_check(vk_space);
 	isOneDirectionPressed = keyRight ^^ keyLeft ^^ keyUp ^^ keyDown; // Verif. q mant. una dir. UNICA
 	
 	// Creacion taladro
