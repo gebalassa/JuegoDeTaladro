@@ -24,6 +24,7 @@
     {"id":{"name":"oWarp","path":"objects/oWarp/oWarp.yy",},"order":5,},
     {"id":{"name":"sRock","path":"sprites/sRock/sRock.yy",},"order":2,},
     {"id":{"name":"oRoom","path":"objects/oRoom/oRoom.yy",},"order":3,},
+    {"id":{"name":"Showcase1","path":"rooms/Showcase1/Showcase1.yy",},"order":2,},
     {"id":{"name":"sMagmaStatic","path":"sprites/sMagmaStatic/sMagmaStatic.yy",},"order":8,},
     {"id":{"name":"sWarp","path":"sprites/sWarp/sWarp.yy",},"order":3,},
     {"id":{"name":"oHat","path":"objects/oHat/oHat.yy",},"order":6,},
@@ -61,6 +62,7 @@
     {"name":"Room0","path":"rooms/Room0/Room0.yy",},
     {"name":"Room3","path":"rooms/Room3/Room3.yy",},
     {"name":"Room4","path":"rooms/Room4/Room4.yy",},
+    {"name":"Showcase1","path":"rooms/Showcase1/Showcase1.yy",},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
