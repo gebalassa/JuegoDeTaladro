@@ -23,7 +23,10 @@ with(all)
 	//Invisibiliza las instancias lejanas.
 	if(abs(x - oCamera.targetObject.x) > oCamera.borderX  or  abs(y - oCamera.targetObject.y) > oCamera.borderY)
 	{
-		visible = false;
+		if(self.x != oMissions.x)
+		{
+			visible = false;
+		}
 	}
 	//Visibiliza las instancias cercanas.
 	else
@@ -34,7 +37,7 @@ with(all)
 }
 
 	//DEBUG 1: Instancias visibles dentro de la sala actual.
-	show_debug_message(string(count) + "/" + string(instance_count));
+	//show_debug_message(string(count) + "/" + string(instance_count));
 	
 	//DEBUG 2: Coordenadas de la vista de la cámara.
 	//show_debug_message(string(camera_get_view_x(view_camera[0])) + "," + string(camera_get_view_y(view_camera[0])));
