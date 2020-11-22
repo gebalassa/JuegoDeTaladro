@@ -23,10 +23,7 @@ with(all)
 	//Invisibiliza las instancias lejanas.
 	if(abs(x - oCamera.targetObject.x) > oCamera.borderX  or  abs(y - oCamera.targetObject.y) > oCamera.borderY)
 	{
-		if(self.x != oMissions.x)
-		{
-			visible = false;
-		}
+		visible = false;
 	}
 	//Visibiliza las instancias cercanas.
 	else
