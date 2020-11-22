@@ -68,22 +68,8 @@ if (horizontalCycle)
 //------------------------------------------------
 if (movementVertical)
 {	
-	
-	// Prevención BUG: Salto de espacio vacio hacia arriba usando justDestroyedGround de
-	// mov. horizontal.
-	// Si se está en horizontalDrilling y se pasa a excavar hacia arriba con un espacio vacio,
-	// esta condicion setea justDestroyedGround en 0 para que sección 'Cambio en fallSpeed' no cambie
-	// el movimiento vertical hacia arriba, activando un erroneo verticalCycle en 'Activacion
-	// verticalCycle'. Esto producia la posibilidad de usar el mov. hor. para saltarse un espacio
-	// hacia arriba.
-	var _isGroundAbove = place_meeting(x, y - global.squareSize, oSolid);
-	if (!_isGroundAbove && horizontalDrilling && currentDrillCycle == 3)
-	{ justDestroyedGround = 0; }
-	
-	// Cambio en fallSpeed
-	// Cambio en fallSpeed a negativo cuando se usa el taladro hacia arriba y HAY tierra
-	if (justDestroyedGround && currentDrillCycle == 3)
-	{ fallSpeed = -1 * abs(fallSpeed); }
+	// Cambio en fallSpeed a negativo cuando se usa el taladro hacia arriba, y HAY tierra 	
+	if (justDestroyedGround && currentDrillCycle == 3) { fallSpeed = -1 * abs(fallSpeed); }
 	else { fallSpeed = abs(fallSpeed); }
 	
 	// Cambio en fallSpeed a CERO cuando se usa el taladro hacia el lado, y HAY tierra
@@ -91,7 +77,6 @@ if (movementVertical)
 	{ horizontalDrilling = true; }
 	else { horizontalDrilling = false;}
 	
-	// Activacion verticalCycle
 	// Hole in Floor (if pos. fallSpeed) or Up-Drill movement (if neg. Fallspeed).
 	if (!place_meeting(x, y + global.squareSize * sign(fallSpeed), oSolid) && !horizontalDrilling)
 	{

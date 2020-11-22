@@ -37,7 +37,7 @@ with(all)
 }
 
 	//DEBUG 1: Instancias visibles dentro de la sala actual.
-	//show_debug_message(string(count) + "/" + string(instance_count));
+	show_debug_message(string(count) + "/" + string(instance_count));
 	
 	//DEBUG 2: Coordenadas de la vista de la cámara.
 	//show_debug_message(string(camera_get_view_x(view_camera[0])) + "," + string(camera_get_view_y(view_camera[0])));
