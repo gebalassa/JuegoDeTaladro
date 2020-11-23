@@ -15,11 +15,6 @@ keyDown = keyboard_check(vk_down);
 keyUp = keyboard_check(vk_up);
 keySpace = keyboard_check(vk_space);
 
-if(death)
-{
-	game_restart();
-}
-
 /// Horizontal Movement
 //-----------------------------
 if (movementHorizontal)

@@ -1,3 +1,4 @@
+// Reinicio variables de movimiento de oPlayer
 function oPlayerRestartVars()
 {
 	// Restart movement vars
@@ -15,3 +16,4 @@ function oPlayerRestartVars()
 	horizontalCycle = false;
 	verticalCycle = false;
 }
+

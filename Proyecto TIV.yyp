@@ -4,6 +4,7 @@
     {"id":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"order":11,},
     {"id":{"name":"sHat","path":"sprites/sHat/sHat.yy",},"order":1,},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"order":10,},
+    {"id":{"name":"returnToCheckpoint","path":"scripts/returnToCheckpoint/returnToCheckpoint.yy",},"order":2,},
     {"id":{"name":"oGround","path":"objects/oGround/oGround.yy",},"order":0,},
     {"id":{"name":"TestingTierra1","path":"rooms/TestingTierra1/TestingTierra1.yy",},"order":0,},
     {"id":{"name":"oGlobals","path":"objects/oGlobals/oGlobals.yy",},"order":4,},
