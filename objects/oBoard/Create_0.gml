@@ -1,6 +1,6 @@
 /// @description Inicialización
 // Puede escribir su código en este editor
-
+initialDepth = layer_get_depth("oBoard");
 showing = false; //Indica si el tablón está abierto.
 cartelsSetted = true;
 

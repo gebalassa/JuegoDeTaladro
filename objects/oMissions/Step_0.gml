@@ -3,7 +3,7 @@
 
 //SELECCIÓN DE MISIÓN
 //Considerando oBoard como único en el juego, se debe estar en la sala que lo contiene para modificar la misión actual.
-if(room == Room1)
+if(room == Area1)
 {
 	//Una vez se comprueba que el jugador está en la sala donde oBoard existe, se consulta si el tablón está abierto.
 	if(oBoard.showing)
@@ -91,6 +91,24 @@ if(currentMainMission != 0)
 		
 	//Condiciones especiales
 	//GENERALES (misión).
+	
+	#region 
+	switch(currentMainMission)
+	{
+		case 2:	switch(currentMainMissionPhase)
+				{
+					case 1: if(room == currentDestinationRoom  and  collision_point(1 * global.squareSize, 14 * global.squareSize, oMagma, false, true))
+							{
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = true;
+							}
+							break;
+				}
+				break;
+	}
+	#endregion
+	
+	#region //condiciones de misiones de testeo
+	/*
 	switch(currentMainMission)
 	{
 		case 1:	//ESPECÍFICAS (fase).
@@ -126,4 +144,6 @@ if(currentMainMission != 0)
 				}
 				break;
 	}
+	*/
+	#endregion
 }

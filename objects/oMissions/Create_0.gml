@@ -24,6 +24,7 @@ mainMissionNull =
 	completed: false
 };
 
+#region //Misiones de testeo
 
 //MISIÓN DE TESTEO 1.
 destinationRoomTest1[0] = Room1;
@@ -69,6 +70,30 @@ mainMissionTest2 =
 	requirementsMet: requirementsMetTest2,
 	completed: false
 };
+#endregion
+
+#region
+
+destinationRoomA2[0] = Area2;
+
+destinationXA2[0] = 1 * global.squareSize; destinationYA2[0] = 7 * global.squareSize;
+
+requirementsMetA2[0] = false;
+
+
+mainMissionA2 = 
+{
+	enabled: true,
+	totalPhases: 1,
+	currentPhase: 1,
+	destinationRoom: destinationRoomA2,
+	destinationX: destinationXA2,
+	destinationY: destinationYA2,
+	requirementsMet: requirementsMetA2,
+	completed: false
+};
+
+#endregion
 
 
 choice = noone; //Selección de misión.
@@ -81,8 +106,8 @@ totalMainMissions = 3;
 mainMission = array_create(totalMainMissions);
 
 mainMission[0] = mainMissionNull;
-mainMission[1] = mainMissionTest1;
-mainMission[2] = mainMissionTest2;
+mainMission[1] = mainMissionNull;
+mainMission[2] = mainMissionA2;
 
 for(var i = 3;i<totalMainMissions;i++;)
 {

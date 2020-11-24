@@ -1,6 +1,9 @@
 /// @description Tablón abierto
 // Puede escribir su código en este editor
 
+xCam = camera_get_view_x(view_camera[0]);
+yCam = camera_get_view_y(view_camera[0]);
+
 //Si el tablón está cerrado, no ocurre nada.
 if(showing)
 {
@@ -38,8 +41,8 @@ if(showing)
 					{
 						count++;
 						
-						_x = random_range(visualBorderXLeft, visualBorderXRight);
-						_y = random_range(visualBorderYTop, visualBorderYBottom - global.squareSize * 2);
+						_x = xCam + random_range(visualBorderXLeft, visualBorderXRight);
+						_y = yCam + random_range(visualBorderYTop, visualBorderYBottom - global.squareSize * 2);
 					}until(!collision_point(_x, _y, oCartel, false, true)  or  count >= 500);
 					//El cartel nuevo no debe cubrir los anteriores.
 					//Se intentará un máximo de 500 veces posicionar el cartel antes de cancelar la creación.

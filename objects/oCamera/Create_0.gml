@@ -9,7 +9,6 @@ view_wport[0] = global.squareSize * 19;
 view_hport[0] = global.squareSize * 11;
 view_visible[0] = true;
 
-
 //Coordenadas del centro de la vista.
 cameraCenterX = view_wport[0]/2;
 cameraCenterY = view_wport[0]/2;
