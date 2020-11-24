@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "sDestinationDisabled",
+    "path": "sprites/sDestinationDisabled/sDestinationDisabled.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -17,18 +20,15 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":82,"eventType":9,"collisionObjectId":null,"parent":{"name":"oRoom","path":"objects/oRoom/oRoom.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":66,"eventType":5,"collisionObjectId":null,"parent":{"name":"oRoom","path":"objects/oRoom/oRoom.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objetos",
-    "path": "folders/Objetos.yy",
+    "name": "oMISSIONS",
+    "path": "folders/Objetos/oMISSIONS.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oRoom",
+  "name": "oDestination",
   "tags": [],
   "resourceType": "GMObject",
 }
