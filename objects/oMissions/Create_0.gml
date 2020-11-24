@@ -71,6 +71,7 @@ mainMissionTest2 =
 	completed: false
 };
 #endregion
+
 #region
 
 destinationRoomA2[0] = Area2;
@@ -78,7 +79,6 @@ destinationRoomA2[0] = Area2;
 destinationXA2[0] = 1 * global.squareSize; destinationYA2[0] = 7 * global.squareSize;
 
 requirementsMetA2[0] = false;
-
 
 mainMissionA2 = 
 {
@@ -92,6 +92,25 @@ mainMissionA2 =
 	completed: false
 };
 
+
+destinationRoomA3[0] = Area3;
+
+destinationXA3[0] = 7 * global.squareSize; destinationYA3[0] = 6 * global.squareSize;
+
+requirementsMetA3[0] = true;
+
+mainMissionA3 = 
+{
+	enabled: true,
+	totalPhases: 1,
+	currentPhase: 1,
+	destinationRoom: destinationRoomA3,
+	destinationX: destinationXA3,
+	destinationY: destinationYA3,
+	requirementsMet: requirementsMetA3,
+	completed: false
+};
+
 #endregion
 
 choice = noone; //Selección de misión.
@@ -100,14 +119,15 @@ currentMainMissionPhase = 0;
 
 
 //DEFINICIÓN DEL ARREGLO QUE CONTIENE TODAS LAS MISIONES.
-totalMainMissions = 3;
+totalMainMissions = 10;
 mainMission = array_create(totalMainMissions);
 
 mainMission[0] = mainMissionNull;
 mainMission[1] = mainMissionNull;
 mainMission[2] = mainMissionA2;
+mainMission[3] = mainMissionA3;
 
-for(var i = 3;i<totalMainMissions;i++;)
+for(var i = 4;i<totalMainMissions;i++;)
 {
 	mainMission[i] = mainMissionNull;
 }

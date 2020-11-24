@@ -11,7 +11,7 @@ if(room == Area1)
 		//Selección.
 		if(keyboard_check_pressed(ord("1"))) {choice = 1;}
 		if(keyboard_check_pressed(ord("2"))) {choice = 2;}
-			//if(keyboard_check_pressed(ord("3"))) {choice = 3;}
+		if(keyboard_check_pressed(ord("3"))) {choice = 3;}
 	
 		if(choice != noone)
 		{
