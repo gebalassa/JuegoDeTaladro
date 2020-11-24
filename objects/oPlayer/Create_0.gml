@@ -28,6 +28,3 @@ distDrill = 1; // Distancia jugador-taladro
 currentDrillCycle = 0; // 0=None, 1=Right, 2=Left, 3=Up, 4=Down
 justDestroyedGround = false; // Para controlar cuando se acaba de destruir tierra
 horizontalDrilling = false;
-
-// Muerte
-death = false;

@@ -16,3 +16,11 @@ else if (type == 2)
 	targetX = instance_find(oPlayer, 0).x;
 	other.y = targetY;
 }
+
+// 3) Posicion exacta. Teletransporta directamente a donde se indique.
+else if (type == 3)
+{
+	other.room_goto(targetRoom);
+	other.x = targetX;
+	other.y = targetY;
+}
