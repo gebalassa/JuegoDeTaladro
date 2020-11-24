@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sWarp",
-    "path": "sprites/sWarp/sWarp.yy",
+    "name": "sTeleporter",
+    "path": "sprites/sTeleporter/sTeleporter.yy",
   },
   "solid": false,
   "visible": true,
@@ -21,8 +21,8 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"oWarp","path":"objects/oWarp/oWarp.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"parent":{"name":"oWarp","path":"objects/oWarp/oWarp.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"parent":{"name":"oTeleporter","path":"objects/oTeleporter/oTeleporter.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"oTeleporter","path":"objects/oTeleporter/oTeleporter.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -31,7 +31,7 @@
     "path": "folders/Objetos/BLOQUES.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oWarp",
+  "name": "oTeleporter",
   "tags": [],
   "resourceType": "GMObject",
 }

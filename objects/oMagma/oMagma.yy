@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objetos",
-    "path": "folders/Objetos.yy",
+    "name": "BLOQUES",
+    "path": "folders/Objetos/BLOQUES.yy",
   },
   "resourceVersion": "1.0",
   "name": "oMagma",
