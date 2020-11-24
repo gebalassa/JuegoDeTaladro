@@ -1,6 +1,6 @@
 /// @desc
 
-// --How does basic movement work?-- (OUTDATED!!!!!!!!!!! ARREGLAR O BORRAR!!!!)
+// --How does basic movement work?-- (OUTDATED!!!!!!!!!!! Solo referencial)
 // 1) movementHorizontal -> Enables horizontalCycle
 // 2) horizontalCycle -> PREVENTS movementHorizontal & movementVertical
 // 3) horizontalCycle ENDS -> Activate everything
@@ -14,6 +14,7 @@ keyLeft = keyboard_check(vk_left);
 keyDown = keyboard_check(vk_down);
 keyUp = keyboard_check(vk_up);
 keySpace = keyboard_check(vk_space);
+
 
 /// Horizontal Movement
 //-----------------------------
@@ -32,6 +33,15 @@ if (movementHorizontal)
 	{
 		horizontalCycle = true;
 	}
+	
+	// Activacion de horizontalDrilling cuando se usa el taladro hacia el lado, y HAY tierra
+	// PREVENCIÓN BUG: Se copió y pego desde 'Vertical Movement' para el bug donde si se
+	// excavaba hacia al lado UN ESPACIO y luego inmediatamente hacia arriba se producia el bug
+	// donde era posible saltarse un espacio de aire. Los otros casos de este bug se cubren en
+	// 'Salto De-Lado-Hacia-Arriba' mas abajo.
+	if (justDestroyedGround && (currentDrillCycle == 1 || currentDrillCycle == 2))
+	{ horizontalDrilling = true; }
+	else { horizontalDrilling = false;}
 }
 
 /// Horizontal Cycle
@@ -64,6 +74,7 @@ if (horizontalCycle)
 if (movementVertical)
 {	
 	
+	// Bug 'Salto De-Lado-Hacia-Arriba'
 	// Prevención BUG: Salto de espacio vacio hacia arriba usando justDestroyedGround de
 	// mov. horizontal.
 	// Si se está en horizontalDrilling y se pasa a excavar hacia arriba con un espacio vacio,
@@ -73,7 +84,9 @@ if (movementVertical)
 	// hacia arriba.
 	var _isGroundAbove = place_meeting(x, y - global.squareSize, oSolid);
 	if (!_isGroundAbove && horizontalDrilling && currentDrillCycle == 3)
-	{ justDestroyedGround = 0; }
+	{
+		justDestroyedGround = 0;
+	}
 	
 	// Cambio en fallSpeed
 	// Cambio en fallSpeed a negativo cuando se usa el taladro hacia arriba y HAY tierra
@@ -81,7 +94,7 @@ if (movementVertical)
 	{ fallSpeed = -1 * abs(fallSpeed); }
 	else { fallSpeed = abs(fallSpeed); }
 	
-	// Cambio en fallSpeed a CERO cuando se usa el taladro hacia el lado, y HAY tierra
+	// Activacion de horizontalDrilling cuando se usa el taladro hacia el lado, y HAY tierra
 	if (justDestroyedGround && (currentDrillCycle == 1 || currentDrillCycle == 2))
 	{ horizontalDrilling = true; }
 	else { horizontalDrilling = false;}
