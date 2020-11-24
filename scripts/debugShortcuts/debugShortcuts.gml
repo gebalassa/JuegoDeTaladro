@@ -1,6 +1,3 @@
-
-
-
 // 1) Shortcut for debug message
 function sdm(myString)
 {

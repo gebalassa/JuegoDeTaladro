@@ -71,7 +71,6 @@ mainMissionTest2 =
 	completed: false
 };
 #endregion
-
 #region
 
 destinationRoomA2[0] = Area2;
@@ -94,7 +93,6 @@ mainMissionA2 =
 };
 
 #endregion
-
 
 choice = noone; //Selección de misión.
 currentMainMission = 0;
