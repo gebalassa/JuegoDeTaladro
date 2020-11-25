@@ -3,7 +3,7 @@
 
 //SELECCIÓN DE MISIÓN
 //Considerando oBoard como único en el juego, se debe estar en la sala que lo contiene para modificar la misión actual.
-if(room == Area1)
+if(room == Oficina)
 {
 	//Una vez se comprueba que el jugador está en la sala donde oBoard existe, se consulta si el tablón está abierto.
 	if(oBoard.showing)

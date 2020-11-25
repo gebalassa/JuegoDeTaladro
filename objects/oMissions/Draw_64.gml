@@ -10,7 +10,7 @@ if(currentMainMission != 0)
 }
 else
 {
-	description = "Revisa el panel de encargos para escoger una nueva tarea.";
+	description = "Check the assignment panel to choose a new task.";
 }
 
 draw_set_color(c_black);

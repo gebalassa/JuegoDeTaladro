@@ -80,7 +80,7 @@ destinationXA2[0] = 1 * global.squareSize; destinationYA2[0] = 7 * global.square
 
 requirementsMetA2[0] = false;
 
-phaseDescriptionA2[0] = "Ve a la zona derecha, llena de magma el fondo y regresa a salvo.";
+phaseDescriptionA2[0] = "Go to the right area, fill the bottom with magma and return safely.";
 
 mainMissionA2 = 
 {
@@ -102,7 +102,7 @@ destinationXA3[0] = 7 * global.squareSize; destinationYA3[0] = 6 * global.square
 
 requirementsMetA3[0] = true;
 
-phaseDescriptionA3[0] = "Ve a la zona superior y realiza tu entrega.";
+phaseDescriptionA3[0] = "Go to the upper area and make your delivery.";
 
 mainMissionA3 = 
 {
