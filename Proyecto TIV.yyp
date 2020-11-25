@@ -12,6 +12,7 @@
     {"id":{"name":"Area2","path":"rooms/Area2/Area2.yy",},"order":1,},
     {"id":{"name":"oGlobals","path":"objects/oGlobals/oGlobals.yy",},"order":4,},
     {"id":{"name":"sCartelSelected","path":"sprites/sCartelSelected/sCartelSelected.yy",},"order":14,},
+    {"id":{"name":"GUIDescription","path":"fonts/GUIDescription/GUIDescription.yy",},"order":1,},
     {"id":{"name":"oPlayerScripts","path":"scripts/oPlayerScripts/oPlayerScripts.yy",},"order":1,},
     {"id":{"name":"returnToCheckpoint","path":"scripts/returnToCheckpoint/returnToCheckpoint.yy",},"order":2,},
     {"id":{"name":"oDestination","path":"objects/oDestination/oDestination.yy",},"order":2,},

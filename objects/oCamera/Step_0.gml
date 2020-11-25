@@ -3,6 +3,14 @@
 
 	var count = 0; //Para DEBUG 1 vvvvv
 	
+//Actualización de variables globales
+global.wCam = camera_get_view_width(view_camera[0]);
+global.hCam = camera_get_view_height(view_camera[0]);
+global.x1Cam = camera_get_view_x(view_camera[0]);
+global.y1Cam = camera_get_view_y(view_camera[0]);
+global.x2Cam = global.x1Cam + global.wCam;
+global.y2Cam = global.y1Cam + global.hCam;
+
 	
 //Actualización de objeto central.
 targetObject = oPlayer;

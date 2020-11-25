@@ -80,11 +80,14 @@ destinationXA2[0] = 1 * global.squareSize; destinationYA2[0] = 7 * global.square
 
 requirementsMetA2[0] = false;
 
+phaseDescriptionA2[0] = "Ve a la zona derecha, llena de magma el fondo y regresa a salvo.";
+
 mainMissionA2 = 
 {
 	enabled: true,
 	totalPhases: 1,
 	currentPhase: 1,
+	phaseDescription: phaseDescriptionA2,
 	destinationRoom: destinationRoomA2,
 	destinationX: destinationXA2,
 	destinationY: destinationYA2,
@@ -99,11 +102,14 @@ destinationXA3[0] = 7 * global.squareSize; destinationYA3[0] = 6 * global.square
 
 requirementsMetA3[0] = true;
 
+phaseDescriptionA3[0] = "Ve a la zona superior y realiza tu entrega.";
+
 mainMissionA3 = 
 {
 	enabled: true,
 	totalPhases: 1,
 	currentPhase: 1,
+	phaseDescription: phaseDescriptionA3,
 	destinationRoom: destinationRoomA3,
 	destinationX: destinationXA3,
 	destinationY: destinationYA3,
@@ -132,5 +138,17 @@ for(var i = 4;i<totalMainMissions;i++;)
 	mainMission[i] = mainMissionNull;
 }
 
+//Arreglo booleano para controlar las alarmas.
+allowingAlarm = array_create(12);
+for(var j = 0;j<12;j++;)
+{
+	allowingAlarm[j] = true;
+}
 
-allowingAlarm = array_create(12, true); //Arreglo booleano para controlar las alarmas.
+hGUI = 3 * global.squareSize;
+//hGUI = 0;
+
+GUILastPos = 3 * global.squareSize;
+//GUILastPos = 0;
+
+hSign = -1;

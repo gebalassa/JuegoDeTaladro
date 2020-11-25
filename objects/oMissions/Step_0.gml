@@ -151,3 +151,19 @@ if(currentMainMission != 0)
 	*/
 	#endregion
 }
+
+#region //Control de GUI
+
+x1GUI = 0;
+y1GUI = global.hCam + (3 * global.squareSize) - hGUI;
+x2GUI = global.wCam;
+y2GUI = global.hCam + (6 * global.squareSize) - hGUI;
+
+if(keyboard_check_pressed(ord("M"))  and  allowingAlarm[1])
+{
+	allowingAlarm[1] = false;
+	hSign *= -1;
+	alarm_set(1, 1);
+}
+
+#endregion
