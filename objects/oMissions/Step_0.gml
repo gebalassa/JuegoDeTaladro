@@ -101,6 +101,10 @@ if(currentMainMission != 0)
 							{
 								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = true;
 							}
+							else
+							{
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = false;
+							}
 							break;
 				}
 				break;
