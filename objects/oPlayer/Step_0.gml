@@ -257,12 +257,38 @@ if (allowDrill)
 //-----------------------------------------------------------
 
 
-// Sprite de oPlayer
+//// Sprite de oPlayer
+
+// Variables locales
+var currSpriteIndex = sprite_index;
+
+// Caso de uso de taladro
 switch (currentDrillCycle)
 {
-	case 0: sprite_index = sPlayer; image_xscale = 1; break;
-	case 1: sprite_index = sDrill; image_xscale = 1; break;
-	case 2: sprite_index = sDrillLeft; image_xscale = 1; break;
-	case 3: sprite_index = sDrillUp; image_xscale = 1; break;
-	case 4: sprite_index = sDrillDown; image_xscale = 1; break;
+	case 1: if (currSpriteIndex != sDrill) {sprite_index = sDrill; image_xscale = 1;} break;
+	case 2: if (currSpriteIndex != sDrillLeft) {sprite_index = sDrillLeft; image_xscale = 1;} break;
+	case 3: if (currSpriteIndex != sDrillUp) {sprite_index = sDrillUp; image_xscale = 1;} break;
+	case 4: if (currSpriteIndex != sDrillDown) {sprite_index = sDrillDown; image_xscale = 1;} break;
+}
+
+// Caso sin taladro
+// 1) Con Movimiento horizontal
+var playerDirection = keyRight - keyLeft;
+if (currentDrillCycle == 0 && (playerDirection != 0))
+{
+	switch (playerDirection)
+	{
+		case 1: if (currSpriteIndex != sPlayerWalk) 
+		{ sprite_index = sPlayerWalk; image_xscale = 1;} break;
+		case -1: if (currSpriteIndex != sPlayerWalkLeft) 
+		{ sprite_index = sPlayerWalkLeft; image_xscale = 1;} break;
+	}
+}
+// Sin movimiento horizontal
+else if (currentDrillCycle == 0 && (playerDirection == 0))
+{
+	if (currSpriteIndex != sPlayer)
+	{
+		sprite_index = sPlayer; image_xscale = 1;
+	}
 }
