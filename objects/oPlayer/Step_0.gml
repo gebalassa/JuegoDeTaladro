@@ -254,3 +254,15 @@ if (allowDrill)
 		currentDrillCycle = 0;
 	}
 }
+//-----------------------------------------------------------
+
+
+// Sprite de oPlayer
+switch (currentDrillCycle)
+{
+	case 0: sprite_index = sPlayer; image_xscale = 1; break;
+	case 1: sprite_index = sDrill; image_xscale = 1; break;
+	case 2: sprite_index = sDrillLeft; image_xscale = 1; break;
+	case 3: sprite_index = sDrillUp; image_xscale = 1; break;
+	case 4: sprite_index = sDrillDown; image_xscale = 1; break;
+}
