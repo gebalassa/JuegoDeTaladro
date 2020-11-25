@@ -7,7 +7,10 @@ textSequence =
 "Hello there! Welcome to Ant Corp.! Use SPACE to advance dialogue.",
 "You'll be working some deliveries here, in this underground society!",
 "You shall take missions from the bulletin board and fulfill them.",
-"But, in order to do that, you'll need to traverse the ground itself! " +
+"To open and close the bulletin board, press enter.",
+"Then, you can choose or abandon an order by pressing the associated numbers.",
+"Also, you can view the order instructions by pressing M",
+"But, to meet your deliveries, you will have to traverse the ground itself! " +
 "For that you ought to excavate with your trusty drill, avoiding magma and " +
 "other obstacles.",
 "Press the arrow keys to move.",

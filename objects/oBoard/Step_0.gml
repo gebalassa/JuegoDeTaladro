@@ -38,8 +38,8 @@ if(showing)
 					{
 						count++;
 						
-						_x = random_range(visualBorderXLeft, visualBorderXRight);
-						_y = random_range(visualBorderYTop, visualBorderYBottom - global.squareSize * 2);
+						_x = global.x1Cam + random_range(visualBorderXLeft, visualBorderXRight);
+						_y = global.y1Cam + random_range(visualBorderYTop, visualBorderYBottom - global.squareSize * 2);
 					}until(!collision_point(_x, _y, oCartel, false, true)  or  count >= 500);
 					//El cartel nuevo no debe cubrir los anteriores.
 					//Se intentará un máximo de 500 veces posicionar el cartel antes de cancelar la creación.

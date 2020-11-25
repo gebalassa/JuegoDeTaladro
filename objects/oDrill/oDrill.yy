@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sDrill",
-    "path": "sprites/sDrill/sDrill.yy",
+    "name": "sDrillTEMP",
+    "path": "sprites/sDrillTEMP/sDrillTEMP.yy",
   },
   "solid": false,
   "visible": true,

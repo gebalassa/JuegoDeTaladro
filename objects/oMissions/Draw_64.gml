@@ -1,15 +1,18 @@
-/// @description (DEBUG) Completitud de misiones
+/// @description Descripción de la misión
 // Puede escribir su código en este editor
-for(var i = 0;i<totalMainMissions;i++;)
-{
-	if(mainMission[i].completed)
-	{
-		draw_set_color(c_green);
-	}
-	else
-	{
-		draw_set_color(c_red);
-	}
 
-	draw_circle(32+48*i, 32, 16, false);
+draw_set_color(c_orange);
+draw_rectangle(x1GUI, y1GUI, x2GUI, y2GUI, false);
+
+if(currentMainMission != 0)
+{
+	description = mainMission[currentMainMission].phaseDescription[currentMainMissionPhase - 1];
 }
+else
+{
+	description = "Check the assignment panel to choose a new task.";
+}
+
+draw_set_color(c_black);
+draw_set_font(GUIDescription);
+draw_text(x1GUI + 1 * global.squareSize, y1GUI + 1 * global.squareSize, description);

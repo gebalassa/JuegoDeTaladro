@@ -3,7 +3,7 @@
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
-  "fontName": "Arial",
+  "fontName": "Consolas",
   "styleName": "Regular",
   "size": 12.0,
   "bold": false,
@@ -195,7 +195,7 @@
     {"lower":32,"upper":127,},
     {"lower":9647,"upper":9647,},
   ],
-  "regenerateBitmap": false,
+  "regenerateBitmap": true,
   "canGenerateBitmap": true,
   "maintainGms1Font": false,
   "parent": {

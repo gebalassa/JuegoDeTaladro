@@ -3,7 +3,7 @@
 
 //SELECCIÓN DE MISIÓN
 //Considerando oBoard como único en el juego, se debe estar en la sala que lo contiene para modificar la misión actual.
-if(room == Room1)
+if(room == Oficina)
 {
 	//Una vez se comprueba que el jugador está en la sala donde oBoard existe, se consulta si el tablón está abierto.
 	if(oBoard.showing)
@@ -11,7 +11,7 @@ if(room == Room1)
 		//Selección.
 		if(keyboard_check_pressed(ord("1"))) {choice = 1;}
 		if(keyboard_check_pressed(ord("2"))) {choice = 2;}
-			//if(keyboard_check_pressed(ord("3"))) {choice = 3;}
+		if(keyboard_check_pressed(ord("3"))) {choice = 3;}
 	
 		if(choice != noone)
 		{
@@ -91,6 +91,28 @@ if(currentMainMission != 0)
 		
 	//Condiciones especiales
 	//GENERALES (misión).
+	
+	#region 
+	switch(currentMainMission)
+	{
+		case 2:	switch(currentMainMissionPhase)
+				{
+					case 1: if(room == currentDestinationRoom  and  collision_point(1 * global.squareSize, 14 * global.squareSize, oMagma, false, true))
+							{
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = true;
+							}
+							else
+							{
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = false;
+							}
+							break;
+				}
+				break;
+	}
+	#endregion
+	
+	#region //condiciones de misiones de testeo
+	/*
 	switch(currentMainMission)
 	{
 		case 1:	//ESPECÍFICAS (fase).
@@ -126,4 +148,22 @@ if(currentMainMission != 0)
 				}
 				break;
 	}
+	*/
+	#endregion
 }
+
+#region //Control de GUI
+
+x1GUI = 0;
+y1GUI = global.hCam + (3 * global.squareSize) - hGUI;
+x2GUI = global.wCam;
+y2GUI = global.hCam + (6 * global.squareSize) - hGUI;
+
+if(keyboard_check_pressed(ord("M"))  and  allowingAlarm[1])
+{
+	allowingAlarm[1] = false;
+	hSign *= -1;
+	alarm_set(1, 1);
+}
+
+#endregion
