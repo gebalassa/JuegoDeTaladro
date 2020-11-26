@@ -24,53 +24,6 @@ mainMissionNull =
 	completed: false
 };
 
-#region //Misiones de testeo
-
-//MISIÓN DE TESTEO 1.
-destinationRoomTest1[0] = Room1;
-destinationRoomTest1[1] = Room2;
-destinationRoomTest1[2] = Room3;
-
-destinationXTest1[0] = 11 * global.squareSize;	destinationYTest1[0] = 9 * global.squareSize;
-destinationXTest1[1] = 4 * global.squareSize;	destinationYTest1[1] = 9 * global.squareSize;
-destinationXTest1[2] = 16 * global.squareSize;	destinationYTest1[2] = 8 * global.squareSize;
-
-requirementsMetTest1[0] = true;
-requirementsMetTest1[1] = false;
-requirementsMetTest1[2] = false;
-
-mainMissionTest1 =
-{
-	enabled: true,
-	totalPhases: 3,
-	currentPhase: 1,
-	destinationRoom: destinationRoomTest1,
-	destinationX: destinationXTest1,
-	destinationY: destinationYTest1,
-	requirementsMet: requirementsMetTest1,
-	completed: false
-};
-
-
-//MISIÓN DE TESTEO 2.
-destinationRoomTest2[0] = Room0;
-
-destinationXTest2[0] = 14 * global.squareSize;	destinationYTest2[0] = 2 * global.squareSize;
-
-requirementsMetTest2[0] = true;
-
-mainMissionTest2 = 
-{
-	enabled: true,
-	totalPhases: 1,
-	currentPhase: 1,
-	destinationRoom: destinationRoomTest2,
-	destinationX: destinationXTest2,
-	destinationY: destinationYTest2,
-	requirementsMet: requirementsMetTest2,
-	completed: false
-};
-#endregion
 
 #region
 
