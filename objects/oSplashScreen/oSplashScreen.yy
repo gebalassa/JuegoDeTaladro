@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "sDrillExternal",
-    "path": "sprites/sDrillExternal/sDrillExternal.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -21,8 +18,8 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"oGround","path":"objects/oGround/oGround.yy",},"parent":{"name":"oDrill","path":"objects/oDrill/oDrill.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"oDrill","path":"objects/oDrill/oDrill.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"oSplashScreen","path":"objects/oSplashScreen/oSplashScreen.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"oSplashScreen","path":"objects/oSplashScreen/oSplashScreen.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -31,7 +28,7 @@
     "path": "folders/Objetos.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oDrill",
+  "name": "oSplashScreen",
   "tags": [],
   "resourceType": "GMObject",
 }
