@@ -15,6 +15,13 @@ keyDown = keyboard_check(vk_down);
 keyUp = keyboard_check(vk_up);
 keySpace = keyboard_check(vk_space);
 
+// DEBUGGING
+//if (verticalCycle || horizontalCycle)
+//{
+//	sdm("BANANA");
+//}
+// FIN DEBUGGING
+
 
 /// Horizontal Movement
 //-----------------------------
@@ -258,7 +265,7 @@ if (allowDrill)
 
 
 //// Sprite de oPlayer
-
+//-----------------------------------------------------------
 // Variables locales
 var currSpriteIndex = sprite_index;
 
@@ -292,3 +299,4 @@ else if (currentDrillCycle == 0 && (playerDirection == 0))
 		sprite_index = sPlayer; image_xscale = 1;
 	}
 }
+//-----------------------------------------------------------
