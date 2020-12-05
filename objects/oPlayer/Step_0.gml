@@ -8,19 +8,130 @@
 // 5) verticalCycle -> PREVENTS movementHorizontal & movementVertical
 // 6) verticalCycle ENDS -> Activate Everything
 
-// Chequear teclas
-keyRight = keyboard_check(vk_right);
-keyLeft = keyboard_check(vk_left);
-keyDown = keyboard_check(vk_down);
-keyUp = keyboard_check(vk_up);
-keySpace = keyboard_check(vk_space);
+
+//// Chequear teclas
+//-----------------------------
+/// Teclas brutas (sin procesar)
+rawKeyRight = keyboard_check(vk_right);
+rawKeyLeft = keyboard_check(vk_left);
+rawKeyDown = keyboard_check(vk_down);
+rawKeyUp = keyboard_check(vk_up);
+rawKeySpace = keyboard_check(vk_space);
 
 // DEBUGGING
-//if (verticalCycle || horizontalCycle)
-//{
-//	sdm("BANANA");
+//if (rawKeyRight && keyboard_check(ord("K")) )
+//{	
+//	var foo = 5;
 //}
 // FIN DEBUGGING
+
+/// Teclas normales (para ser procesadas)
+keyRight = rawKeyRight;
+keyLeft = rawKeyLeft;
+keyDown = rawKeyDown
+keyUp = rawKeyUp;
+keySpace = rawKeySpace;
+
+/// Comprobacion tecla actual
+///Comprobacion teclas direccionales "raw" usando teclas frame anterior (variables "lastFrame").
+// Esto facilita el uso de las teclas cuando se quiere cambiar de direccion sin tener que soltar
+// la tecla de la frame anterior. Si son las mismas, se mantiene la direccion de movimiento.
+// Si nuevas teclas NO SON subconjunto de anteriores, las que se mantuvieron de la frame anterior
+// se cancelan para dar paso a las teclas nuevas. Si, por algun motivo, el jugador decide presionar
+// VARIAS teclas nuevas, se prioriza segun Derecha > Izquierda > Arriba > Abajo.
+// Se usan las teclas "raw" ya que las teclas "normales" guardaran los resultados de cualquier
+// procesamiento (ej.: Desactivación).
+// **2020-12-03: Es posible que isOneDirectionPressed sea redundante después de esto
+// pero se mantendrá por si acaso.
+
+// 1) a] Verificacion de si son las mismas teclas "raw" de frame anterior (isSameRawKeysAsLastFrame)
+if (rawKeyRight == lastRawKeyRight && rawKeyLeft == lastRawKeyLeft && rawKeyUp == lastRawKeyUp &&
+	rawKeyDown == lastRawKeyDown)
+	{ isSameRawKeysAsLastFrame = true; }
+else
+	{ isSameRawKeysAsLastFrame = false; }
+
+// b] Verificacion de si teclas actuales son subconjunto de teclas antiguas (isSubsetOfOldRawKeys).
+// Necesario para que no se borren teclas antiguas si son distintas pero son un subconjunto.
+// Ej: Pasaba que si se tenia Izq+Der y se pasaba a Der, se borraba y el jugador se detenia.
+//** Por su naturaleza, si isSameRawKeysAsLastFrame es verdadera entonces esta variable igual,
+//** pues corresponde isSameRawKeysAsLastFrame al caso particular donde el subconjunto es sí mismo.
+if ((!lastRawKeyRight && rawKeyRight) || (!lastRawKeyLeft && rawKeyLeft) ||
+	(!lastRawKeyUp && rawKeyUp) || (!lastRawKeyDown && rawKeyDown))
+	{ isSubsetOfOldRawKeys = false; }
+else
+	{ isSubsetOfOldRawKeys = true; }
+
+// c] Verificacion de tecla activa (isAnyRawKeyActive).
+// Se usa en "Eleccion en caso de VARIAS teclas NUEVAS", para NO usar teclas del frame anterior
+// si no hay ninguna presionada actualmente. Esto previene error donde se salia de la seccion
+// con mas de una tecla "normal" seleccionada, destruyendo el propósito de todo este procesamiento.
+if (rawKeyRight || rawKeyLeft || rawKeyUp || rawKeyDown)
+	{ isAnyRawKeyActive = true; }
+else
+	{ isAnyRawKeyActive = false; }
+
+// 2) Anulacion de teclas antiguas
+// Si las "raw" NO son subconjunto de las del frame anterior, se apagan las "normales" que tenian
+// su "raw" activado en la frame anterior. Esto evita que, si SON subconjunto, se apaguen todas por
+// considerarse "antiguas" y el jugador se detenga.
+if (!isSubsetOfOldRawKeys)
+{
+	// a. Derecha
+	if (keyRight && lastRawKeyRight) { keyRight = 0; }
+	
+	// b. Izquierda
+	if (keyLeft && lastRawKeyLeft) { keyLeft = 0; }
+	
+		// c. Arriba
+	if (keyUp && lastRawKeyUp) { keyUp = 0; }
+	
+		// d. Abajo
+	if (keyDown && lastRawKeyDown) { keyDown = 0; }
+}
+
+// 3) Eleccion en caso de VARIAS teclas NUEVAS apretadas, segun prioridad de la forma
+// Derecha > Izquierda > Arriba > Abajo. Solo se ejecuta si las teclas "raw" no son las mismas
+// de antes. De lo contrario, se setean las "normales" segun variables de frame
+// anterior pues debiesen tener UNA SOLA activada, evitando la existencia de múltiples teclas 
+// "normales" activadas. En caso de que, además, no haya ninguna tecla presionada
+// (!isAnyRawKeyActive), simplemente se salta ese paso.
+if (!isSameRawKeysAsLastFrame)
+{
+	if (keyRight && (keyLeft || keyUp || keyDown))
+	{
+		keyLeft = 0; keyUp = 0; keyDown = 0;
+	}
+	else if (keyLeft && (keyUp || keyDown))
+	{
+		keyUp = 0; keyDown = 0;
+	}
+	else if (keyUp && keyDown)
+	{
+		keyDown = 0;
+	}
+}
+else if (isAnyRawKeyActive)
+{
+	keyRight = lastKeyRight;
+	keyLeft = lastKeyLeft;
+	keyDown = lastKeyDown;
+	keyUp = lastKeyUp;
+}
+
+// DEBUGGING
+//if (keyboard_check_pressed(ord("K")))
+//{	
+//	sdm("");
+//	sdm("KeyUp: " + string(keyUp) );
+//	sdm("KeyDown: " + string(keyDown) );
+//	sdm("KeyRight: " + string(keyRight) );
+//	sdm("KeyLeft: " + string(keyLeft) );
+//	sdm("isSameRawKeysAsLastFrame: " + string(isSameRawKeysAsLastFrame));
+//	sdm("isSubsetOfOldRawKeys: " + string(isSubsetOfOldRawKeys));
+//}
+// FIN DEBUGGING
+//-----------------------------
 
 
 /// Horizontal Movement
@@ -44,8 +155,8 @@ if (movementHorizontal)
 	// Activacion de horizontalDrilling cuando se usa el taladro hacia el lado, y HAY tierra
 	// PREVENCIÓN BUG: Se copió y pego desde 'Vertical Movement' para el bug donde si se
 	// excavaba hacia al lado UN ESPACIO y luego inmediatamente hacia arriba se producia el bug
-	// donde era posible saltarse un espacio de aire. Los otros casos de este bug se cubren en
-	// 'Salto De-Lado-Hacia-Arriba' mas abajo.
+	// donde era posible saltarse un espacio de aire. Los otros casos similares 
+	// de este bug se cubren en 'Salto De-Lado-Hacia-Arriba' mas abajo.
 	if (justDestroyedGround && (currentDrillCycle == 1 || currentDrillCycle == 2))
 	{ horizontalDrilling = true; }
 	else { horizontalDrilling = false;}
@@ -90,7 +201,7 @@ if (movementVertical)
 	// verticalCycle'. Esto producia la posibilidad de usar el mov. hor. para saltarse un espacio
 	// hacia arriba.
 	var _isGroundAbove = place_meeting(x, y - global.squareSize, oSolid);
-	if (!_isGroundAbove && horizontalDrilling && currentDrillCycle == 3)
+	if (!_isGroundAbove && horizontalDrilling && lastCurrentDrillCycle == 3)
 	{
 		justDestroyedGround = 0;
 	}
@@ -300,3 +411,24 @@ else if (currentDrillCycle == 0 && (playerDirection == 0))
 	}
 }
 //-----------------------------------------------------------
+
+
+//// Variables "lastFrame" (para tener info de la frame anterior durante la proxima frame)
+//-----------------------------------------------------------
+// 1) Variables Direccionales + Espacio
+// a. Raw
+lastRawKeyRight = rawKeyRight;
+lastRawKeyLeft = rawKeyLeft;
+lastRawKeyUp = rawKeyUp;
+lastRawKeyDown = rawKeyDown;
+lastRawKeySpace = rawKeySpace;
+
+// b. Normales
+lastKeyRight = keyRight;
+lastKeyLeft = keyLeft;
+lastKeyUp = keyUp;
+lastKeyDown = keyDown;
+lastKeySpace = keySpace;
+
+// 2) Otras Variables lastFrame
+lastCurrentDrillCycle = currentDrillCycle;
