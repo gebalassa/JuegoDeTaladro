@@ -145,10 +145,7 @@ for(var j = 0;j<12;j++;)
 	allowingAlarm[j] = true;
 }
 
-hGUI = 3 * global.squareSize;
-//hGUI = 0;
-
-GUILastPos = 3 * global.squareSize;
-//GUILastPos = 0;
-
-hSign = -1;
+//Variables de movimiento de GUI.
+hGUI = 0; //Altura de la GUI respecto al borde inferior de la cámara.
+GUILastPos = hGUI; //Última posición antes de completar un movimiento.
+hSign = -1; //Dirección de movimiento.

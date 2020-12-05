@@ -11,6 +11,8 @@ global.isCheckpointActive = false;
 global.isCheckpointOnCooldown = false;
 
 //Cámara
+//Las únicas que llegan a usarse (05-12-20) son wCam y hCam.
+//Las otras podrían quedar obsoletas a futuro.
 global.x1Cam = noone;
 global.y1Cam = noone;
 global.x2Cam = noone;

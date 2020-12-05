@@ -154,15 +154,17 @@ if(currentMainMission != 0)
 
 #region //Control de GUI
 
+//Actualización de coordenadas de la GUI, según la cámara.
 x1GUI = 0;
-y1GUI = global.hCam + (3 * global.squareSize) - hGUI;
+y1GUI = global.hCam - hGUI;
 x2GUI = global.wCam;
-y2GUI = global.hCam + (6 * global.squareSize) - hGUI;
+y2GUI = y1GUI + (3 * global.squareSize);
 
+//Apertura y cierre de GUI
 if(keyboard_check_pressed(ord("M"))  and  allowingAlarm[1])
 {
-	allowingAlarm[1] = false;
-	hSign *= -1;
+	allowingAlarm[1] = false; //Bloquea el accionamiento voluntario del movimiento.
+	hSign *= -1; //Cambia la dirección de movimiento.
 	alarm_set(1, 1);
 }
 

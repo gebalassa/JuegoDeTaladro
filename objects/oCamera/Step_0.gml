@@ -3,7 +3,7 @@
 
 	var count = 0; //Para DEBUG 1 vvvvv
 	
-//Actualización de variables globales
+//Actualización de variables globales de cámara
 global.wCam = camera_get_view_width(view_camera[0]);
 global.hCam = camera_get_view_height(view_camera[0]);
 global.x1Cam = camera_get_view_x(view_camera[0]);
