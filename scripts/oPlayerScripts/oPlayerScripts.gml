@@ -16,4 +16,3 @@ function oPlayerRestartVars()
 	horizontalCycle = false;
 	verticalCycle = false;
 }
-

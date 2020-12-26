@@ -142,8 +142,13 @@ if (movementHorizontal)
 	
 	// If there's a solid in the way...
 	if (place_meeting(x + global.squareSize * horizontalDirection, y, oSolid))
-	{
-		horizontalDirection = 0; // ...Horizontal movement is zero.
+	{		
+		// If the drill is NOT to be used in this frame horizontally
+		// to destroy the block...
+		if (!allowDrill || !keySpace || horizontalDirection == 0)
+		{
+			horizontalDirection = 0; // ...Horizontal movement is zero.
+		}
 	}
 	
 	// Else if horizontalDirection isn't zero, initiate single-block movement cycle
