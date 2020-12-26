@@ -24,6 +24,7 @@
     {"id":{"name":"debugShortcuts","path":"scripts/debugShortcuts/debugShortcuts.yy",},"order":0,},
     {"id":{"name":"Showcase1","path":"rooms/Showcase1/Showcase1.yy",},"order":1,},
     {"id":{"name":"sCheckpoint","path":"sprites/sCheckpoint/sCheckpoint.yy",},"order":14,},
+    {"id":{"name":"Area4","path":"rooms/Area4/Area4.yy",},"order":5,},
     {"id":{"name":"sGround","path":"sprites/sGround/sGround.yy",},"order":1,},
     {"id":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"order":3,},
     {"id":{"name":"oMagma","path":"objects/oMagma/oMagma.yy",},"order":1,},
@@ -118,6 +119,7 @@
     {"roomId":{"name":"TestingTunel","path":"rooms/TestingTunel/TestingTunel.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Showcase2","path":"rooms/Showcase2/Showcase2.yy",},},
+    {"roomId":{"name":"Area4","path":"rooms/Area4/Area4.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

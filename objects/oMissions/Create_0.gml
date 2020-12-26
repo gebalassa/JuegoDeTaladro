@@ -74,6 +74,32 @@ mainMissionTest2 =
 
 #region
 
+destinationRoomA1[0] = Area4;
+destinationRoomA1[1] = Area4;
+
+destinationXA1[0] = 9 * global.squareSize; destinationYA1[0] = 28 * global.squareSize;
+destinationXA1[1] = 9 * global.squareSize; destinationYA1[1] = 28 * global.squareSize;
+
+requirementsMetA1[0] = true;
+requirementsMetA1[1] = false;
+
+phaseDescriptionA1[0] = "Go to the client's home, in the lower area.";
+phaseDescriptionA1[1] = "Stay waiting for the client.";
+
+mainMissionA1 = 
+{
+	enabled: true,
+	totalPhases: 2,
+	currentPhase: 1,
+	phaseDescription: phaseDescriptionA1,
+	destinationRoom: destinationRoomA1,
+	destinationX: destinationXA1,
+	destinationY: destinationYA1,
+	requirementsMet: requirementsMetA1,
+	completed: false
+};
+
+
 destinationRoomA2[0] = Area2;
 
 destinationXA2[0] = 1 * global.squareSize; destinationYA2[0] = 7 * global.squareSize;
@@ -129,7 +155,7 @@ totalMainMissions = 10;
 mainMission = array_create(totalMainMissions);
 
 mainMission[0] = mainMissionNull;
-mainMission[1] = mainMissionNull;
+mainMission[1] = mainMissionA1;
 mainMission[2] = mainMissionA2;
 mainMission[3] = mainMissionA3;
 

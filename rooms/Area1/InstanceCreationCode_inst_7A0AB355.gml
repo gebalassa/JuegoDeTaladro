@@ -1,0 +1,1 @@
+inBorderOfMap = true;

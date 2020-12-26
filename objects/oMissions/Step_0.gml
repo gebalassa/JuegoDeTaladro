@@ -95,6 +95,32 @@ if(currentMainMission != 0)
 	#region 
 	switch(currentMainMission)
 	{
+		case 1:	switch(currentMainMissionPhase)
+				{
+					case 2: //Normalmente, se llamaría al código de la alarma 0, pero en su lugar, el código es reescrito para que se ejecute inmediatamente.
+							if(allowingAlarm[0])
+							{
+								allowingAlarm[0] = false;
+								initializedCounter = current_time;
+							}
+							//Cuando han pasado 10 segundos, se permite terminar la misión.
+							else if(current_time - initializedCounter > 10000)
+							{
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = true;
+							}
+							
+							//Si el jugador se aleja mucho, el contador se retrocede a la fase 1.
+							if(!collision_rectangle(9 * global.squareSize, 20 * global.squareSize, 18 * global.squareSize, 29 * global.squareSize, oPlayer, false, true)  and  room == currentDestinationRoom)
+							{
+								allowingAlarm[0] = true;
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = false;
+								currentMainMissionPhase = 1;
+							}
+							
+								//sdm(string(current_time - initializedCounter));
+				}
+				break;
+				
 		case 2:	switch(currentMainMissionPhase)
 				{
 					case 1: if(room == currentDestinationRoom  and  collision_point(1 * global.squareSize, 14 * global.squareSize, oMagma, false, true))
@@ -150,6 +176,14 @@ if(currentMainMission != 0)
 	}
 	*/
 	#endregion
+}
+
+
+//APARICIÓN DE TELETRANSPORTADORES
+//Misión 1
+if(mainMission[1].completed  and  instance_exists(inst_5F6A6091))
+{
+	inst_5F6A6091.y = 30 * global.squareSize;
 }
 
 #region //Control de GUI

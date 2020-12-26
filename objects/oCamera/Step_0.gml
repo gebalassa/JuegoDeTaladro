@@ -1,7 +1,7 @@
 /// @description Actualización
 // Puede escribir su código en este editor
 
-	var count = 0; //Para DEBUG 1 vvvvv
+	//var count = 0; //Para DEBUG 1 vvvvv
 	
 //Actualización de variables globales de cámara
 global.wCam = camera_get_view_width(view_camera[0]);
@@ -40,7 +40,7 @@ with(all)
 	else
 	{
 		visible = true;
-			count++;
+			//count++;
 	}
 }
 
