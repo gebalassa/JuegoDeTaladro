@@ -12,6 +12,7 @@ if(room == Oficina)
 		if(keyboard_check_pressed(ord("1"))) {choice = 1;}
 		if(keyboard_check_pressed(ord("2"))) {choice = 2;}
 		if(keyboard_check_pressed(ord("3"))) {choice = 3;}
+		if(keyboard_check_pressed(ord("4"))) {choice = 4;}
 	
 		if(choice != noone)
 		{
@@ -78,7 +79,8 @@ if(currentMainMission != 0)
 	//Completar todas las fases implica completar la misión.
 	if(currentMainMissionPhase > mainMission[currentMainMission].totalPhases)
 	{
-		mainMission[currentMainMission].completed = true;
+		mainMission[currentMainMission].completed = true; //Misión completada
+		remainingMissions--; //Una misión menos.
 		//Reinicio de variables.
 		currentMainMission = 0;
 		

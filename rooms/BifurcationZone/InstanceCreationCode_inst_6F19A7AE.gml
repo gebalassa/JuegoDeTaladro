@@ -1,4 +1,4 @@
 type = 3;
-targetRoom = Area4;
+targetRoom = StoneQuarry;
 targetX = 25 * global.squareSize;
 targetY = 0;

@@ -1,4 +1,4 @@
 type = 3;
-targetRoom = Area2;
+targetRoom = BoilerRoom;
 targetX = 0;
 targetY = 7 * global.squareSize;
