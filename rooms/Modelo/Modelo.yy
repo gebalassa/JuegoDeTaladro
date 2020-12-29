@@ -42,8 +42,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Mapping",
-    "path": "folders/Salas/Mapping.yy",
+    "name": "Salas",
+    "path": "folders/Salas.yy",
   },
   "resourceVersion": "1.0",
   "name": "Modelo",
