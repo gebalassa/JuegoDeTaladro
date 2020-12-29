@@ -12,6 +12,7 @@ if(room == Oficina)
 		if(keyboard_check_pressed(ord("1"))) {choice = 1;}
 		if(keyboard_check_pressed(ord("2"))) {choice = 2;}
 		if(keyboard_check_pressed(ord("3"))) {choice = 3;}
+		if(keyboard_check_pressed(ord("4"))) {choice = 4;}
 	
 		if(choice != noone)
 		{
@@ -78,7 +79,8 @@ if(currentMainMission != 0)
 	//Completar todas las fases implica completar la misión.
 	if(currentMainMissionPhase > mainMission[currentMainMission].totalPhases)
 	{
-		mainMission[currentMainMission].completed = true;
+		mainMission[currentMainMission].completed = true; //Misión completada
+		remainingMissions--; //Una misión menos.
 		//Reinicio de variables.
 		currentMainMission = 0;
 		
@@ -95,6 +97,32 @@ if(currentMainMission != 0)
 	#region 
 	switch(currentMainMission)
 	{
+		case 1:	switch(currentMainMissionPhase)
+				{
+					case 2: //Normalmente, se llamaría al código de la alarma 0, pero en su lugar, el código es reescrito para que se ejecute inmediatamente.
+							if(allowingAlarm[0])
+							{
+								allowingAlarm[0] = false;
+								initializedCounter = current_time;
+							}
+							//Cuando han pasado 10 segundos, se permite terminar la misión.
+							else if(current_time - initializedCounter > 10000)
+							{
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = true;
+							}
+							
+							//Si el jugador se aleja mucho, el contador se retrocede a la fase 1.
+							if(!collision_rectangle(9 * global.squareSize, 20 * global.squareSize, 18 * global.squareSize, 29 * global.squareSize, oPlayer, false, true)  and  room == currentDestinationRoom)
+							{
+								allowingAlarm[0] = true;
+								mainMission[currentMainMission].requirementsMet[currentMainMissionPhase - 1] = false;
+								currentMainMissionPhase = 1;
+							}
+							
+								//sdm(string(current_time - initializedCounter));
+				}
+				break;
+				
 		case 2:	switch(currentMainMissionPhase)
 				{
 					case 1: if(room == currentDestinationRoom  and  collision_point(1 * global.squareSize, 14 * global.squareSize, oMagma, false, true))
@@ -152,17 +180,27 @@ if(currentMainMission != 0)
 	#endregion
 }
 
+
+//APARICIÓN DE TELETRANSPORTADORES
+//Misión 1
+if(mainMission[1].completed  and  instance_exists(inst_F7CF899))
+{
+	inst_F7CF899.y = 30 * global.squareSize;
+}
+
 #region //Control de GUI
 
+//Actualización de coordenadas de la GUI, según la cámara.
 x1GUI = 0;
-y1GUI = global.hCam + (3 * global.squareSize) - hGUI;
+y1GUI = global.hCam - hGUI;
 x2GUI = global.wCam;
-y2GUI = global.hCam + (6 * global.squareSize) - hGUI;
+y2GUI = y1GUI + (3 * global.squareSize);
 
+//Apertura y cierre de GUI
 if(keyboard_check_pressed(ord("M"))  and  allowingAlarm[1])
 {
-	allowingAlarm[1] = false;
-	hSign *= -1;
+	allowingAlarm[1] = false; //Bloquea el accionamiento voluntario del movimiento.
+	hSign *= -1; //Cambia la dirección de movimiento.
 	alarm_set(1, 1);
 }
 
