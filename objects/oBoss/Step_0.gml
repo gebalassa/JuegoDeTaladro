@@ -1,7 +1,8 @@
 /// @desc
 
 // Collision with Player
-if place_meeting(x, y, oPlayer)
+// Displacement allows dialogue to start without touching the NPC directly.
+if place_meeting(x + triggerHorizontalDisplacement, y + triggerVerticalDisplacement, oPlayer)
 {
 	// If textbox is not created, create it and save it.
 	if (myTextbox == noone)
