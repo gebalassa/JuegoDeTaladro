@@ -16,3 +16,9 @@ function oPlayerRestartVars()
 	horizontalCycle = false;
 	verticalCycle = false;
 }
+
+function oPlayerStop()
+{
+	movementHorizontal = false;
+	movementVertical = false;
+}

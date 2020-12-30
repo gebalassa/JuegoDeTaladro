@@ -1,14 +1,14 @@
 /// @desc
 
 /// Initial Draw event variables
-textSeqLength = array_length(textSequence); // Length of textSequence
+textSeqLength = array_length(textSequence[sequenceIndex]); // Length of textSequence
 if (textIndex < textSeqLength)
 {	
 	// Current text
-	currText = textSequence[textIndex];
+	currText = textSequence[sequenceIndex][textIndex];
 	
 	// String height for multiple lines
-	currTextHeight = string_height(textSequence[textIndex]) - stringHeightReduction;
+	currTextHeight = string_height(textSequence[sequenceIndex][textIndex]) - stringHeightReduction;
 };
 
 // Set width of bounding box MINUS a margin. Margin has to be multiplied by 2
@@ -24,3 +24,5 @@ draw_sprite(sTextbox, 0, x, y);
 draw_set_font(fTextbox); // Set font
 draw_set_color(c_black);
 draw_text_ext(x + margin, y + margin, currText, currTextHeight, boxWidth); // Draw text
+
+	//sdm(string(sequenceIndex));
