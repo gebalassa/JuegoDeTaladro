@@ -10,6 +10,9 @@ if place_meeting(x + triggerHorizontalDisplacement, y + triggerVerticalDisplacem
 		// Saving & Creating textbox
 		myTextbox = instance_create_layer(x, y, "oBoss", oTextbox);
 		myTextbox.y -= sprite_get_height(sTextbox); // Positioned just above NPC
+		
+		// Talking sprite
+		sprite_index = sBossTalking;
 	}
 }
 else
@@ -19,5 +22,8 @@ else
 		// Destroy textbox if collision ends
 		instance_destroy(myTextbox);
 		myTextbox = noone;
+		
+		// Non-talking sprite
+		sprite_index = sBoss;
 	}
 }
