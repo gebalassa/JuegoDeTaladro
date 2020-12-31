@@ -9,6 +9,7 @@ global.currentCheckpointX = -1;
 global.currentCheckpointY = -1;
 global.isCheckpointActive = false;
 global.isCheckpointOnCooldown = false;
+global.isPlayerDead = false;
 
 //Cámara
 global.x1Cam = noone;

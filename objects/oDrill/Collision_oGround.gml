@@ -9,11 +9,9 @@ if (!myPlayer.verticalCycle && !myPlayer.horizontalCycle)
 	instance_destroy(other);
 	myPlayer.justDestroyedGround = true;
 
-	// Activa alarma 1, de reinicio de justDestroyedGround, en oPlayer.
-	
+	// Activa alarma 1, de reinicio de justDestroyedGround, en oPlayer.	
 	// Duracion mov. 1 bloque vertical + 1 frame para poder entrar al siguiente bloque,
-	// evitando caer justo al final del movimiento suponiendo hay vacio debajo.	
-	
+	// evitando caer justo al final del movimiento suponiendo hay vacio debajo.		
 	if (myPlayer.currentDrillCycle == 3 || myPlayer.currentDrillCycle == 4) // hacia ARRIBA y ABAJO
 	{
 		var timer = global.squareSize / abs(myPlayer.fallSpeed) + 1;

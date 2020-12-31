@@ -1,4 +1,4 @@
 type = 3;
-targetRoom = Area1;
+targetRoom = BifurcationZone;
 targetX = 0;
 targetY = 15 * global.squareSize;

@@ -1,0 +1,1 @@
+isDoor = true;
