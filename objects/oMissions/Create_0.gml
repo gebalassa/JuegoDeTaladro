@@ -24,7 +24,6 @@ mainMissionNull =
 	completed: false
 };
 
-
 #region
 
 destinationRoomA1[0] = StoneQuarry;
