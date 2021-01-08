@@ -149,6 +149,27 @@ if (movementHorizontal)
 		{
 			horizontalDirection = 0; // ...Horizontal movement is zero.
 		}
+		
+		// If the drill IS to be used and there is oGround...
+		else if place_meeting(x + horizontalDirection * global.squareSize, y, oGround)
+		{
+			var _groundToDestroy = instance_place(x + horizontalDirection * global.squareSize,
+												y, oGround);
+			var _timer = global.squareSize / abs(movementSpeed) + 1;
+			
+			// Destroy oGround, add power to the drill through justDestroyedGround.
+			instance_destroy(_groundToDestroy);
+			justDestroyedGround = true;
+			alarm[1] = _timer;
+			
+			// Cambio currentDrillCycle
+			if keyRight { currentDrillCycle = 1; }
+			else if keyLeft { currentDrillCycle = 2; }
+			
+			// Activate horizontalCycle
+			horizontalCycle = true;
+			
+		}
 	}
 	
 	// Else if horizontalDirection isn't zero, initiate single-block movement cycle
@@ -201,14 +222,14 @@ if (movementVertical)
 	// Prevención BUG: Salto de espacio vacio hacia arriba usando justDestroyedGround de
 	// mov. horizontal.
 	// Si se está en horizontalDrilling y se pasa a excavar hacia arriba con un espacio vacio,
-	// esta condicion setea justDestroyedGround en 0 para que sección 'Cambio en fallSpeed' no cambie
+	// esta cond. setea justDestroyedGround en False para que sección 'Cambio en fallSpeed' no cambie
 	// el movimiento vertical hacia arriba, activando un erroneo verticalCycle en 'Activacion
 	// verticalCycle'. Esto producia la posibilidad de usar el mov. hor. para saltarse un espacio
 	// hacia arriba.
 	var _isGroundAbove = place_meeting(x, y - global.squareSize, oSolid);
 	if (!_isGroundAbove && horizontalDrilling && lastCurrentDrillCycle == 3)
 	{
-		justDestroyedGround = 0;
+		justDestroyedGround = false;
 	}
 	
 	// Cambio en fallSpeed
@@ -228,7 +249,7 @@ if (movementVertical)
 	{
 		// Enables verticalCycle
 		verticalCycle = true;
-		// Deactivate horizontal/vert ical inputs while falling at least one complete block
+		// Deactivate horizontal/vertical inputs while falling at least one complete block
 		movementHorizontal = false;
 		movementVertical = false;
 	}
