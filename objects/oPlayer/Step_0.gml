@@ -9,6 +9,13 @@
 // 6) verticalCycle ENDS -> Activate Everything
 
 
+//// Setear variables
+//-----------------------------
+isHorCycleOverThisFrame = false; // Usada en oDrill.myPlayer
+
+//-----------------------------
+
+
 //// Chequear teclas
 //-----------------------------
 /// Teclas brutas (sin procesar)
@@ -193,7 +200,15 @@ if (movementHorizontal)
 // Meanwhile, movement is deactivated, avoiding sudden direction change
 // which could lead to partial movement.
 if (horizontalCycle)
-{
+{	
+	// DEBUGGING
+	//if (place_meeting(x+horizontalDirection*global.squareSize, y, oGround) &&
+	//	movementCounter == global.squareSize / movementSpeed - 1 )
+	//	{
+	//		sdm("bananan");
+	//	}
+	// FIN DEBUGGING
+	
 	x += movementSpeed * horizontalDirection;
 	movementHorizontal = false;
 	movementVertical = false;
@@ -208,6 +223,13 @@ if (horizontalCycle)
 		movementCounter = 0;
 		movementHorizontal = true;
 		movementVertical = true;
+		
+		// Indicate cycle ended during this frame.
+		// Used in oDrill.myCycle
+		// **CORRECCION DE BUG**: Sirve ara evitar que en oDrill se destruya un bloque
+		// sin moverse si se detiene el uso del taladro en el último frame de
+		// horizontalCycle.
+		isHorCycleOverThisFrame = true;
 	}
 }
 //----------------------------------------------

@@ -4,7 +4,10 @@
 // Si el jugador NO esta en un ciclo de movimiento permite destruccion, evitando
 // destruir tierra adicional innecesariamente producto de apuntar el taladro en otra direccion
 // durante el proceso.
-if (!myPlayer.verticalCycle && !myPlayer.horizontalCycle)
+//**Corrección de bug**: Se usa isHorCycleOverThisFrame para evitar que oPlayer destruya un
+// bloque sin moverse si se detiene justo en la última frame de su horizontalCycle, en el cual
+// la variable se torna falsa.
+if (!myPlayer.verticalCycle && !myPlayer.horizontalCycle && !myPlayer.isHorCycleOverThisFrame)
 {
 	instance_destroy(other);
 	myPlayer.justDestroyedGround = true;

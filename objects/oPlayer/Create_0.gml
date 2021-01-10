@@ -6,6 +6,7 @@
 movementHorizontal = true;
 movementVertical = true;
 allowDrill = true;
+isHorCycleOverThisFrame = false; // Si el ciclo de mov. hor. terminó esta frame.
 
 // Defaults
 defaultFallSpeed = 8;
