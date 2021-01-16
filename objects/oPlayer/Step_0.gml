@@ -175,6 +175,8 @@ if (movementHorizontal)
 			
 			// Activate horizontalCycle
 			horizontalCycle = true;
+			movementHorizontal = false;
+			movementVertical = false;
 			
 		}
 	}
@@ -183,6 +185,8 @@ if (movementHorizontal)
 	else if (horizontalDirection != 0)
 	{
 		horizontalCycle = true;
+		movementHorizontal = false;
+		movementVertical = false;
 	}
 	
 	// Activacion de horizontalDrilling cuando se usa el taladro hacia el lado, y HAY tierra
@@ -200,18 +204,9 @@ if (movementHorizontal)
 // Meanwhile, movement is deactivated, avoiding sudden direction change
 // which could lead to partial movement.
 if (horizontalCycle)
-{	
-	// DEBUGGING
-	//if (place_meeting(x+horizontalDirection*global.squareSize, y, oGround) &&
-	//	movementCounter == global.squareSize / movementSpeed - 1 )
-	//	{
-	//		sdm("bananan");
-	//	}
-	// FIN DEBUGGING
-	
+{
+	// Pixels moved during this frame
 	x += movementSpeed * horizontalDirection;
-	movementHorizontal = false;
-	movementVertical = false;
 	
 	movementCounter++;
 	// End of Animation
@@ -227,7 +222,7 @@ if (horizontalCycle)
 		// Indicate cycle ended during this frame.
 		// Used in oDrill.myCycle
 		// **CORRECCION DE BUG**: Sirve ara evitar que en oDrill se destruya un bloque
-		// sin moverse si se detiene el uso del taladro en el último frame de
+		// sin moverse al detenerse el uso del taladro en el último frame de
 		// horizontalCycle.
 		isHorCycleOverThisFrame = true;
 	}
@@ -236,7 +231,7 @@ if (horizontalCycle)
 
 
 /// Vertical Movement
-//------------------------------------------------
+//----------------------------------------------
 if (movementVertical)
 {	
 	
@@ -265,8 +260,11 @@ if (movementVertical)
 	{ horizontalDrilling = true; }
 	else { horizontalDrilling = false;}
 	
-	// Activacion verticalCycle
-	// Hole in Floor (if pos. fallSpeed) or Up-Drill movement (if neg. Fallspeed).
+	// Activacion verticalCycle	
+	// Variables iniciales
+	verticalDirection = keyDown - keyUp;
+	
+	// Case 1: Hole in Floor (if pos. fallSpeed) or Up-Drill movement (if neg. Fallspeed).
 	if (!place_meeting(x, y + global.squareSize * sign(fallSpeed), oSolid) && !horizontalDrilling)
 	{
 		// Enables verticalCycle
@@ -275,6 +273,40 @@ if (movementVertical)
 		movementHorizontal = false;
 		movementVertical = false;
 	}
+	
+	// Case 2: NOT a hole in floor/roof BUT drill is meant to be active vertically and there's
+	// destructible oGround.
+	//**Corrección de bug**: Hecho para resolver el bug de "Destruir Sin Mover", pero en el sentido
+	// vertical. Aplica exclusivamente al caso donde se comienza a excavar justo al lado del bloque
+	// de interés.
+	else if (place_meeting(x, y + verticalDirection * global.squareSize, oGround) && allowDrill &&
+			keySpace && verticalDirection != 0)
+	{	
+		// Necessary modification of fallSpeed
+		if ( keyUp ) { fallSpeed = -1 * abs(fallSpeed);}
+		else if (keyDown) { fallSpeed = abs(fallSpeed); }
+		
+		// Variables
+		var _groundToDestroy = instance_place(x, y + verticalDirection * global.squareSize,
+											oGround);
+		var _timer = global.squareSize / abs(fallSpeed) + 1;
+			
+		// Destroy oGround, add power to the drill through justDestroyedGround.
+		instance_destroy(_groundToDestroy);
+		justDestroyedGround = true;
+		alarm[1] = _timer;
+			
+		// Cambio currentDrillCycle
+		if keyUp { currentDrillCycle = 3; }
+		else if keyDown { currentDrillCycle = 4; }
+			
+		// Enables verticalCycle
+		verticalCycle = true;
+		// Deactivate horizontal/vertical inputs while falling at least one complete block
+		movementHorizontal = false;
+		movementVertical = false;		
+	}
+	
 }
 
 // If there's verticalCycle, start fluid movement by 1 block.
