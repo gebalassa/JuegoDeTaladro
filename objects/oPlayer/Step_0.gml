@@ -26,9 +26,9 @@ rawKeyUp = keyboard_check(vk_up);
 rawKeySpace = keyboard_check(vk_space);
 
 // DEBUGGING
-//if (rawKeyRight && keyboard_check(ord("K")) )
-//{	
-//	var foo = 5;
+//if (x==704 && y==960 && rawKeySpace && rawKeyUp && room == BifurcationZone)
+//{
+//	sdm("x: " + string(x) + " " + "y: " + string(y));
 //}
 // FIN DEBUGGING
 
@@ -280,16 +280,23 @@ if (movementVertical)
 	// vertical. Aplica exclusivamente al caso donde se comienza a excavar justo al lado del bloque
 	// de interés.
 	else if (place_meeting(x, y + verticalDirection * global.squareSize, oGround) && allowDrill &&
-			keySpace && verticalDirection != 0)
+			 keySpace && verticalDirection != 0)
 	{	
 		// Necessary modification of fallSpeed
 		if ( keyUp ) { fallSpeed = -1 * abs(fallSpeed);}
 		else if (keyDown) { fallSpeed = abs(fallSpeed); }
 		
 		// Variables
+		//---
+		// Tierra a destruir, ya sea abajo o arriba dep. de verticalDirection.
 		var _groundToDestroy = instance_place(x, y + verticalDirection * global.squareSize,
 											oGround);
-		var _timer = global.squareSize / abs(fallSpeed) + 1;
+											
+		// **CORRECCIÓN BUG**: A diferencia de Step en oDrill aquí NO se suma "+1", ya que se alcanza a entrar
+		// a "verticalCycle" en esta misma frame, dando "1 frame de ventaja", mientras que en oDrill se entra
+		// después de esta frame.
+		var _timer = global.squareSize / abs(fallSpeed);		
+		//---
 			
 		// Destroy oGround, add power to the drill through justDestroyedGround.
 		instance_destroy(_groundToDestroy);
