@@ -9,7 +9,7 @@ if(oMissions.mainMission[3].completed)
 		//sdm(string(phase));
 	switch(phase)
 	{
-		case 1:		sdm(string(image_index));
+		case 1:		//sdm(string(image_index));
 				sprite_index = sNPC3Talking;
 				if(image_index > 3.9)
 				{

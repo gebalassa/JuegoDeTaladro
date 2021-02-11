@@ -58,6 +58,7 @@
     {"id":{"name":"oHouse","path":"objects/oHouse/oHouse.yy",},"order":8,},
     {"id":{"name":"sBackground","path":"sprites/sBackground/sBackground.yy",},"order":0,},
     {"id":{"name":"sBackgroundOfice","path":"sprites/sBackgroundOfice/sBackgroundOfice.yy",},"order":1,},
+    {"id":{"name":"LongTunnel","path":"rooms/LongTunnel/LongTunnel.yy",},"order":0,},
     {"id":{"name":"sNPC1","path":"sprites/sNPC1/sNPC1.yy",},"order":6,},
     {"id":{"name":"sBoard","path":"sprites/sBoard/sBoard.yy",},"order":2,},
     {"id":{"name":"sBoss","path":"sprites/sBoss/sBoss.yy",},"order":3,},
@@ -119,6 +120,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"LongTunnel","path":"rooms/LongTunnel/LongTunnel.yy",},},
     {"roomId":{"name":"SplashScreen","path":"rooms/SplashScreen/SplashScreen.yy",},},
     {"roomId":{"name":"AntCorpStatue","path":"rooms/AntCorpStatue/AntCorpStatue.yy",},},
     {"roomId":{"name":"BifurcationZone","path":"rooms/BifurcationZone/BifurcationZone.yy",},},
@@ -152,6 +154,7 @@
     {"folderPath":"folders/Sprites/HATS.yy","order":18,"resourceVersion":"1.0","name":"HATS","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/sNPCs.yy","order":36,"resourceVersion":"1.0","name":"sNPCs","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objetos/NPCs.yy","order":10,"resourceVersion":"1.0","name":"NPCs","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Salas/2021 TESTING.yy","order":9,"resourceVersion":"1.0","name":"2021 TESTING","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},

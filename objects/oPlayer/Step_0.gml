@@ -1,6 +1,6 @@
 /// @desc
 
-// --How does basic movement work?-- (OUTDATED!!!!!!!!!!! Solo referencial)
+// --How does basic movement work?-- (OUTDATED!!!!!!!!!!! Only referential)
 // 1) movementHorizontal -> Enables horizontalCycle
 // 2) horizontalCycle -> PREVENTS movementHorizontal & movementVertical
 // 3) horizontalCycle ENDS -> Activate everything

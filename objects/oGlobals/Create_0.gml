@@ -1,4 +1,7 @@
 /// @desc Creation of Global Vars
+//**SÓLO DEBE COLOCARSE EN LA PRIMERA HABITACIÓN DEL JUEGO
+// DONDE SE REQUIERAN VARIABLES GLOBALES Y NINGUNA OTRA
+// PARA EVITAR REINICIAR VARIABLES GLOBALES**
 
 // Tamano de los cuadrados en pixeles
 global.squareSize = 64;
